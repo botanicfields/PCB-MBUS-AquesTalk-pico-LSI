@@ -14,11 +14,7 @@ AquesTalkPicoSpi::~AquesTalkPicoSpi()
 
 int AquesTalkPicoSpi::Begin(SPIClass &spi, int ss)
 {
-  const int gpio_sleep(13);        // GPIO13
-  pinMode(gpio_sleep, OUTPUT);
-  digitalWrite(gpio_sleep, HIGH);  // wake up
   delay(80);  // 80ms: reset process of AquesTalk-Pico
-
   m_spi = &spi;
   m_ss = ss;
   pinMode(m_ss, OUTPUT);
@@ -44,7 +40,7 @@ int AquesTalkPicoSpi::Send(const char* msg)
   return 0;
 }
 
-size_t AquesTalkPicoSpi::Recv(char* res, int res_size)
+size_t AquesTalkPicoSpi::Recv(char* res, size_t res_size)
 {
   int i = 0;
 // default by Arduino-ESP32

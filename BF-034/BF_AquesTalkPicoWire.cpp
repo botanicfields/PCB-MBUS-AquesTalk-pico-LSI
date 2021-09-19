@@ -12,20 +12,17 @@ AquesTalkPicoWire::~AquesTalkPicoWire()
 {
 }
 
-int AquesTalkPicoWire::Begin(TwoWire &wire)
+int AquesTalkPicoWire::Begin(TwoWire &wire, int i2c_address)
 {
-  const int gpio_sleep(13);        // GPIO13
-  pinMode(gpio_sleep, OUTPUT);
-  digitalWrite(gpio_sleep, HIGH);  // wake up
-  delay(80);  // 80ms: reset process of AquesTalk-Pico
-
+  delay(80);  // 80ms: reset process of AquesTalk pico LSI
   m_wire = &wire;
+  m_i2c_address = i2c_address;
   return 0;
 }
 
 int AquesTalkPicoWire::Send(const char* msg)
 {
-  m_wire->beginTransmission(address_aquestalk_pico);
+  m_wire->beginTransmission(m_i2c_address);
   m_wire->write(msg);
   int return_code = m_wire->endTransmission();
   if (return_code != 0)
@@ -35,11 +32,11 @@ int AquesTalkPicoWire::Send(const char* msg)
   return return_code;
 }
 
-size_t AquesTalkPicoWire::Recv(char* res, int res_size)
+size_t AquesTalkPicoWire::Recv(char* res, size_t res_size)
 {
   int i = 0;
   while (i < res_size - 1) {
-    m_wire->requestFrom(address_aquestalk_pico, 1);
+    m_wire->requestFrom(m_i2c_address, 1);
     if (m_wire->available()) {
       char recv_data = m_wire->read();
       res[i++] = recv_data;

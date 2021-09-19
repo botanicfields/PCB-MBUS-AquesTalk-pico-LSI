@@ -13,7 +13,7 @@ class AquesTalkPicoSpi {
 
   int Begin(SPIClass &spi, int ss);
   int Send(const char* msg);
-  size_t Recv(char* res, int res_size);
+  size_t Recv(char* res, size_t res_size);
 
  private:
   SPIClass* m_spi;

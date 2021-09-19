@@ -13,7 +13,7 @@ class AquesTalkPicoSerial {
 
   int Begin(Stream &stream);
   int Send(const char* msg);
-  size_t Recv(char* res, int res_size);
+  size_t Recv(char* res, size_t res_size);
 
  private:
   Stream* m_stream;

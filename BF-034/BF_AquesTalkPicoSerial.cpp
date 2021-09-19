@@ -18,14 +18,8 @@ AquesTalkPicoSerial::~AquesTalkPicoSerial()
 
 int AquesTalkPicoSerial::Begin(Stream &stream)
 {
-  const int gpio_sleep(13);        // GPIO13
-  pinMode(gpio_sleep, OUTPUT);
-  digitalWrite(gpio_sleep, LOW);   // set sleep
-  delay(500);
-  digitalWrite(gpio_sleep, HIGH);  // wake up
   delay(80);  // 80ms: reset process of AquesTalk-Pico
   m_stream = &stream;
-  Send("?");
   m_recv_count = 0;
   return 0;
 }
@@ -37,18 +31,19 @@ int AquesTalkPicoSerial::Send(const char* msg)
   return 0;
 }
 
-size_t AquesTalkPicoSerial::Recv(char* res, int res_size)
+size_t AquesTalkPicoSerial::Recv(char* res, size_t res_size)
 {
-  char recv_data = 0;
-  while (m_recv_count < res_size - 1) {
+  while (m_recv_count <  m_recv_size - 1) {
     if (m_stream->available()) {
-      recv_data = m_stream->read();
+      char recv_data = m_stream->read();
       m_recv[m_recv_count++] = recv_data;
       if (recv_data == '>' || recv_data == '*') break;
     }
     else
       return 0;
   }
+  if (m_recv_count > res_size - 1)
+    m_recv_count = res_size - 1;
   for (int i = 0; i < m_recv_count; ++i)
     res[i] = m_recv[i];
   res[m_recv_count] = '\0';

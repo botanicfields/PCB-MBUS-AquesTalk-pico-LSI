@@ -11,13 +11,14 @@ class AquesTalkPicoWire {
   AquesTalkPicoWire();
   ~AquesTalkPicoWire();
 
-  int Begin(TwoWire &wire);
+  // 0x2e: defaut/safe-mode i2c address of AquesTalk pico LSI
+  int Begin(TwoWire &wire, int i2c_address = 0x2e);
   int Send(const char* msg);
-  size_t Recv(char* res, int res_size);
+  size_t Recv(char* res, size_t res_size);
 
  private:
   TwoWire* m_wire;
-  const int address_aquestalk_pico = 0x2e;
+  int m_i2c_address;
 };
 
 #endif  // INCLUDED_BF_AQUESTALKPICOWIRE_H

@@ -37,7 +37,8 @@ size_t AquesTalkPicoSerial::Recv(char* res, size_t res_size)
     if (m_stream->available()) {
       char recv_data = m_stream->read();
       m_recv[m_recv_count++] = recv_data;
-      if (recv_data == '>' || recv_data == '*') break;
+      if (recv_data == '>' || recv_data == '*')
+        break;
     }
     else
       return 0;

@@ -40,7 +40,8 @@ size_t AquesTalkPicoWire::Recv(char* res, size_t res_size)
     if (m_wire->available()) {
       char recv_data = m_wire->read();
       res[i++] = recv_data;
-      if (recv_data == '>' || recv_data == '*') break;
+      if (recv_data == '>' || recv_data == '*')
+        break;
     }
     else
       break;

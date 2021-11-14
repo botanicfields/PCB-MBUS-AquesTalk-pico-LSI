@@ -291,5 +291,5 @@ AquesTalk pico LSI と UART でインタフェースする派生クラスです�
 ### int Begin(Stream &stream);
 AquesTalk pico LSI を接続する UART を指定します。
 
-# 解説記事
+# 6. 参考
 Qiita: [AquesTalk pico LSI を M5Stack の UART, I2C, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

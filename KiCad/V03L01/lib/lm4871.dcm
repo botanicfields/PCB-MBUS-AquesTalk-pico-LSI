@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP LM4871
+D 3-W, mono, analog input Class-AB audio amplifier
+F https://www.tij.co.jp/lit/ds/symlink/lm4871.pdf
+$ENDCMP
+#
+#End Doc Library

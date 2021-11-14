@@ -1,12 +1,14 @@
 # PCB-MBUS-AquesTalk-pico-LSI
 MBUS Module of AquesTalk pico LSI for M5Stack
 
-# 概要
+<img src="./image/module1.JPG" width=300> <img src="./image/module2.JPG" width=300> <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300> 
+
+# 1. 概要
 「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。AquesTalk pico LSI の詳細は、データシートを参照ください。
 - [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
-## 特徴
+## 1.1 特徴
 - 28 ピン DIP タイプの AquesTalk pico LSI 1 個を搭載できます。
 - ATP3011, ATP3012 の両方の AquesTalk pico LSI に対応しています。
 - PROTO モジュールのモールドを流用し、M5Stack に取り付けできます。
@@ -16,14 +18,19 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - I2C, SPI, UART の全ての接続を試すことができます。
 - スタンドアロンモードのためのランドがあります。
 
-## 商品内容
+### 組み立て例
+
+## 1.2 商品内容
 - M-BUS モジュール基板（半完成品※）1枚  
 ※ AquesTalk pico LSI（別売）の取り付けが必要です。
 - スピーカーケーブル 1 組（2 ピン PH 相当コネクタ付き、20cm 片端ストリップ済）  
 （秋月電子通商扱い）コネクタ付コード２Ｐ（Ａ）　（赤白）[DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/)
 - 説明書
 
-## 別途必要なもの
+<img src="./image/product1.JPG" width=300> <img src="./image/product2
+.JPG" width=300>
+
+## 1.3 別途必要なもの
 - AquesTalk pico LSI（秋月電子通商扱い）  
 音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ１－ＰＵ（ゆっくりな女性の音声）
 [ATP3011F1-PU](https://akizukidenshi.com/catalog/g/gI-06220/)  
@@ -44,15 +51,17 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - Arudino-IDE が動作する環境  
 Arduin-IDE Ver.1.18.16, M5Stack Boards Manager 2.0.0 以降
 
-# モジュール基板の組み立て
+# 2. モジュール基板の組み立て
 
-### AquesTalk pico LSI の取り付け
-別売の AquestTalk pico LSI（28 ピン DIP パッケージ）を 1 個搭載できます。ATP3011 と ATP3012 とでは取り付け穴が異なります。基板上のシルク印刷に従って差し込みハンダ付けします。はんだ付け後、モジュール基板裏面から飛び出しているピンを短くカットしてください。
+## 2.1 AquesTalk pico LSI の取り付け
+別売の AquestTalk pico LSI（28 ピン DIP パッケージ）を 1 個搭載できます。ATP3011 と ATP3012 とでは取り付け穴が異なります。基板上のシルク印刷に従ってピンを差し込み、はんだ付けします。はんだ付け後、モジュール基板裏面から飛び出しているピンを短く切ってください。
 
-### モールドの取り付け
+<img src="./image/pcb1.JPG" width=300> <img src="./image/pcb2.JPG" width=300> <img src="./image/pcb3.JPG" width=300> 
+
+## 2.2 モールドの取り付け
 プロトモジュールのモールドおよびネジ 4 本を流用して、M5Stack の M-BUS モジュールに仕立てることができます。モールドをモジュール基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモジュールから切り取ります。
 
-<img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300><img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
+<img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300> <img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
 
 ### IC ソケットは使用できません
 IC ソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で 1 列タイプのIC ソケットを使用すると ATP3011 と ATP3012 を差し換えることはできますが、モジュール基板裏面からのピンの飛び出しの対処も大変になります。
@@ -63,6 +72,7 @@ IC ソケットを使用すると、プロトモジュールのモールドに�
 丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４
 [JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り  
 
+<img src="./image/socket1.JPG" width=300> <img src="./image/socket2.JPG" width=300>
 
 ### その他の端子について
 J2 は、ICSP です。コネクタ等は実装されていません。使用する場合、ピンヘッダをハンダ付けするなどの処置が必要です。ICSP の VCC は AquesTalk pico LSI の電源端子に繋がっているほか、M5Stack の 3.3V にも繋がっています。ICSP を使用する場合は、モジュール基板を M5Stack から切り離し、単体にして接続してください。  
@@ -70,12 +80,21 @@ J3 は、スタンドアロンモードで使用する PC0-3 信号および GND
 
 - ICSP: In Circuit Serial Programming
 
-# モジュール基板の設定
+### スタンドアロン接続例
+「M5Stack用 AquesTalk pico LSI モジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板15」を接続しています。M5Stack の電源とリセットを使用します。
+- [M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
+- [ダイオードマトリクススイッチ15基板](https://www.switch-science.com/catalog/7371/)
 
-## DIP スイッチによる動作モード・通信モードの設定
-動作モード、および使用するインタフェース（通信モード）に合わせて、モジュール基板上の DIP スイッチを設定します。モード毎の設定は、次項以降で説明しています。おすすめは I2C 接続です。出荷時の設定は、セーフモード、I2C 接続です。
+<img src="./image/socket3.JPG" width=300>
 
-| 1 | 2 | 3 | 4 |動作モード|通信モード|
+# 3. モジュールの設定（DIP スイッチ）
+
+## 3.1 DIP スイッチによる動作モード・通信モードの設定
+動作モード、および使用するインタフェース（通信モード）に合わせて、モジュール基板上の DIP スイッチを設定します。設定にはピンセットなどが必要です。  
+おすすめは I2C 接続です。出荷時の設定は、セーフモード、I2C 接続です。  
+インタフェース毎の設定を次項以降で説明しています。
+
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作モード|通信モード|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |OFF|OFF| - | - | コマンド入力モード | - |
 |OFF|ON | - | - | セーフモード | - |
@@ -88,50 +107,50 @@ J3 は、スタンドアロンモードで使用する PC0-3 信号および GND
 
 ※DIP スイッチは、ON で GND 接続する回路のため、ON = 0, OFF = 1 です。
 
-### DIP スイッチによる I2C 接続の設定
+## (1) I2C 接続の設定
 
-| 1 | 2 | 3 | 4 |動作|
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作|
 |:-:|:-:|:-:|:-:|:- |
 |OFF|OFF|OFF|ON |I2C アドレスは EEPROM に設定した値（初期値 0x2E）|
 |OFF|ON |OFF|ON |I2C アドレスは強制的に 0x2E|
 
-### DIP スイッチによる SPI 接続の設定
+## (2) SPI 接続の設定
 
-| 1 | 2 | 3 | 4 |動作|
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作|
 |:-:|:-:|:-:|:-:|:- |
 |OFF|OFF/ON|ON |OFF|SPI mode 3|
 |OFF|OFF/ON|ON |ON |SPI mode 0※|
 
 ※サンプルプログラムは、SPI mode 0 で作成しています。
 
-### DIP スイッチによる UART 接続の設定
+## (3) UART 接続の設定
 
-| 1 | 2 | 3 | 4 |動作|
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作|
 |:-:|:-:|:-:|:-:|:- |
 |OFF|OFF|OFF|OFF|設定されたスピードで動作※|
 |OFF|ON |OFF|OFF|強制的に 9600bps で動作|
 
-※ ATP3011 の場合、SLEEP 解除後の '?' 送信で自動設定
+※ ATP3011 の場合、SLEEP 解除後の '?' 送信で自動設定  
 ※ ATP3012 の場合、EEPROM に設定
 
-### スタンドアロンモード
+## (4) スタンドアロンモード
 
-| 1 | 2 | 3 | 4 |動作|
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作|
 |:-:|:-:|:-:|:-:|:- |
 |ON |OFF|ON/OFF|ON/OFF|PC0-3 の信号入力によりプリセットメッセージを選択して再生|
 
-### デモモード
+## (5) デモモード
 
-| 1 | 2 | 3 | 4 |動作|
+|DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作|
 |:-:|:-:|:-:|:-:|:- |
 |ON |ON |ON/OFF|ON/OFF|プリセットメッセージを順番に自動再生|
 
-## ハンダジャンパによる信号の接続
+## 3.2 ハンダジャンパによる信号の接続
 
-### インターフェース信号
+## (1) インターフェース信号
 モジュール基板裏面のジャンパをハンダでショートすると、M5Stack の GPIO とAquesTalk pico LSI のピンとを接続できます。
 
-| | GPIO | AquesTalk pico LSI |
+|ジャンパ|GPIO|AquesTalk pico LSI|
 |:-:|:-:|:-:|
 |JP1|16|TX|
 |JP2|19|MISO|
@@ -141,16 +160,20 @@ J3 は、スタンドアロンモードで使用する PC0-3 信号および GND
 - MISO: Master-In Slave-Out
 - SS: Slave Select
 
-使用するインタフェースに合わせてジャンパを接続します。I2C は JP1, JP2, JP3 をオープンのままで使用できます。他の用途に影響がなければ JP1, JP2, JP3 をショートすることで全てのインタフェースを使用可能です。出荷時は全てオープンです。
+使用するインタフェースに合わせてジャンパを、はんだで接続します。  
+I2C の場合は JP1, JP2, JP3 を全てオープン（はんだ接続なし）のままで使用できます。  
+他の用途に影響がなければ JP1, JP2, JP3 をショートすることで全てのインタフェースを使用可能です。  
+出荷時は全てオープンです。
 
-| | JP1 | JP2 | JP3 | Signal-GPIO |
+|インタフェース|JP1|JP2|JP3|AquestTalk pico LSI ピン=GPIO|
 |:-:|:-:|:-:|:-:|:- |
-|I2C | - | - | - | SDA: 21, SCL: 22 |
-|SPI | - |Short|Short| MOSI: 23, MISO: 19, SCK: 18, SS: 5|
-|UART|Short| - | - | TX: 16, RX: 17 |
+|I2C| - | - | - |SDA=21, SCL=22|
+|SPI| - |Short|Short|MOSI=23, MISO=19, SCK=18, SS=5|
+|UART|Short| - | - |TX=16, RX=17|
 
-### Sleep 信号
-    AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。接続した場合、GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」を使用する必要があり、この場合、速度設定のために Sleep の使用が必要となります。
+## (2) Sleep 信号
+    AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。  
+    ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために Sleep が必要です。
 
 | | GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|

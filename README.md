@@ -2,14 +2,12 @@
 MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 概要
-AquesTalk pico LSI は、音声合成専用の LSI として市販されています。「M5Stack用 AquesTalk pico LSI モジュール」は、AquesTalk pico LSI（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。
-
-AquesTalk pico LSI の詳細は、データシートを参照ください。  
-[Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)  
-[Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)  
+「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。AquesTalk pico LSI の詳細は、データシートを参照ください。
+- [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
+- [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
 ## 特徴
-- 28 ピン DIP タイプの AquesTalk pico LSI 1 個を搭載できます。 
+- 28 ピン DIP タイプの AquesTalk pico LSI 1 個を搭載できます。
 - ATP3011, ATP3012 の両方の AquesTalk pico LSI に対応しています。
 - PROTO モジュールのモールドを流用し、M5Stack に取り付けできます。
 - M-BUS 接続により、スピーカー以外のケーブル接続が不要です。
@@ -22,12 +20,10 @@ AquesTalk pico LSI の詳細は、データシートを参照ください。
 - M-BUS モジュール基板（半完成品※）1枚  
 ※ AquesTalk pico LSI（別売）の取り付けが必要です。
 - スピーカーケーブル 1 組（2 ピン PH 相当コネクタ付き、20cm 片端ストリップ済）  
-（秋月電子通商扱い）コネクタ付コード２Ｐ（Ａ）　（赤白）
-[DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/) 
+（秋月電子通商扱い）コネクタ付コード２Ｐ（Ａ）　（赤白）[DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/)
 - 説明書
 
 ## 別途必要なもの
-
 - AquesTalk pico LSI（秋月電子通商扱い）  
 音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ１－ＰＵ（ゆっくりな女性の音声）
 [ATP3011F1-PU](https://akizukidenshi.com/catalog/g/gI-06220/)  
@@ -38,30 +34,39 @@ AquesTalk pico LSI の詳細は、データシートを参照ください。
 音声合成ＬＳＩ　ＡＴＰ３０１２Ｆ６－ＰＵ（女性の音声明瞭版）
 [ATP3012F6-PU](https://akizukidenshi.com/catalog/g/gI-09973/)  
 音声合成ＬＳＩ　ＡＴＰ３０１２Ｒ５－ＰＵ（小型ロボットの音声）
-[ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)  
+[ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)
 - スピーカー  
-4Ω ～ 8Ω 程度、1W 以上が望ましいです
+4 ～ 8Ω 程度、1W 以上が望ましいです
 - 工具類  
 ハンダ、ハンダごて、ニッパー、六角レンチ(0.5mm)、カッターなど
 - M5Stack  
 サンプルプログラムは、M5Stack Core Basic で動作確認しています
 - Arudino-IDE が動作する環境  
-Arduin-IDE Ver.1.18.16, Arduino-ESP32 2.0.0 または M5Stack 2.0.0 
+Arduin-IDE Ver.1.18.16, M5Stack Boards Manager 2.0.0 以降
 
 # モジュール基板の組み立て
 
 ### AquesTalk pico LSI の取り付け
-    別売りの AquestTalk pico LSI（28 ピン DIP パッケージ）を 1 個搭載できます。ATP3011 と ATP3012 とでは取り付け穴が異なります。基板上のシルク印刷に従って差し込みハンダ付けします。はんだ付け後、モジュール基板裏面から飛び出しているピンを短くカットしてください。
+別売の AquestTalk pico LSI（28 ピン DIP パッケージ）を 1 個搭載できます。ATP3011 と ATP3012 とでは取り付け穴が異なります。基板上のシルク印刷に従って差し込みハンダ付けします。はんだ付け後、モジュール基板裏面から飛び出しているピンを短くカットしてください。
 
 ### モールドの取り付け
-    プロトモジュールのモールドおよびネジ 4 本を流用して、M5Stack の M-BUS モジュールに仕立てることができます。モールドをモジュール基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモジュールから切り取ります。
+プロトモジュールのモールドおよびネジ 4 本を流用して、M5Stack の M-BUS モジュールに仕立てることができます。モールドをモジュール基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモジュールから切り取ります。
+
+<img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300><img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
 
 ### IC ソケットは使用できません
-    IC ソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で 1 列タイプのIC ソケットを使用すると ATP3011 と ATP3012 を差し換えることはできますが、モジュール基板裏面からのピンの飛び出しの対処も大変になります。
+IC ソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で 1 列タイプのIC ソケットを使用すると ATP3011 と ATP3012 を差し換えることはできますが、モジュール基板裏面からのピンの飛び出しの対処も大変になります。
+
+- ICソケット（秋月電子通商扱い）  
+丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４
+[6604S-14](https://akizukidenshi.com/catalog/g/gP-03470/)  
+丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４
+[JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り  
+
 
 ### その他の端子について
-    J3 は、スタンドアロンモードで使用する PC0-3 信号および GND の端子です。コネクタ等は実装されていません。使用する場合は信号ケーブルを直接ハンダ付けするなどの処置が必要です。
-    J2 は、ICSP です。コネクタ等は実装されていません。使用する場合、ピンヘッダをハンダ付けするなどの処置が必要です。ICSP の VCC は AquesTalk pico LSI の電源端子に繋がっているほか、M5Stack の 3.3V にも繋がっています。ICSP を使用する場合は、モジュール基板を M5Stack から切り離し、単体にして接続してください。
+J2 は、ICSP です。コネクタ等は実装されていません。使用する場合、ピンヘッダをハンダ付けするなどの処置が必要です。ICSP の VCC は AquesTalk pico LSI の電源端子に繋がっているほか、M5Stack の 3.3V にも繋がっています。ICSP を使用する場合は、モジュール基板を M5Stack から切り離し、単体にして接続してください。  
+J3 は、スタンドアロンモードで使用する PC0-3 信号および GND の端子です。コネクタ等は実装されていません。使用する場合は信号ケーブルを直接ハンダ付けするなどの処置が必要です。
 
 - ICSP: In Circuit Serial Programming
 
@@ -106,7 +111,7 @@ Arduin-IDE Ver.1.18.16, Arduino-ESP32 2.0.0 または M5Stack 2.0.0
 |OFF|OFF|OFF|OFF|設定されたスピードで動作※|
 |OFF|ON |OFF|OFF|強制的に 9600bps で動作|
 
-※ ATP3011 の場合、SLEEP 解除後の '?' 送信で自動設定  
+※ ATP3011 の場合、SLEEP 解除後の '?' 送信で自動設定
 ※ ATP3012 の場合、EEPROM に設定
 
 ### スタンドアロンモード
@@ -145,7 +150,7 @@ Arduin-IDE Ver.1.18.16, Arduino-ESP32 2.0.0 または M5Stack 2.0.0
 |UART|Short| - | - | TX: 16, RX: 17 |
 
 ### Sleep 信号
-    AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。接続した場合、GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」を使用する必要があり、この場合、速度設定のために Sleep の使用が必要となります。 
+    AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。接続した場合、GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」を使用する必要があり、この場合、速度設定のために Sleep の使用が必要となります。
 
 | | GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|
@@ -187,22 +192,22 @@ AquesTalk pico LSI を M5Stack に接続し、I2C(Wire), SPI, UART(Serial) で�
 ## デモの内容
 
 ### setup()
-- SLEEP ピンの処理（デフォルトでは実行する）  
+- SLEEP ピンの処理（デフォルトでは実行する）
 モジュール基板の JP4 をショートすると GPIO13 が AquesTalk pico LSI の SLEEP ピンに接続します。GPIO13 を HIGH にして SLEEP でない通常状態にします。
 
-- UART スピード（ATP3011）を設定（UART のみ。デフォルトでは実行しない）  
+- UART スピード（ATP3011）を設定（UART のみ。デフォルトでは実行しない）
 AquesTalk pico LSI (ATP3011) の UART スピードを設定します。GPIO13 が AquesTalk pico LSI の SLEEP ピンと接続している必要があります。
 
-- UART スピード（ATP3012）を書き換え（UART のみ。デフォルトでは実行しない）  
+- UART スピード（ATP3012）を書き換え（UART のみ。デフォルトでは実行しない）
 AquesTalk pico LSI (ATP3012) の UART スピードを書き換えます。
 
-- I2Cアドレスを書き換え（I2C のみ。デフォルトでは実行しない）  
+- I2Cアドレスを書き換え（I2C のみ。デフォルトでは実行しない）
 AquesTalk pico LSI の I2C アドレスを書き換えます。
 
-- プリセットメッセージを書き込む（デフォルトでは実行しない）  
+- プリセットメッセージを書き込む（デフォルトでは実行しない）
 AquesTalk pico LSI にプリセットメッセージとして、ソースコード内のデータを書き込みます。実行には時間がかかります。
 
-- EEPROM データをダンプ（デフォルトでは実行しない）  
+- EEPROM データをダンプ（デフォルトでは実行しない）
 AquesTalk pico LSI の EEPROM データをシリアルモニタに表示します。実行には時間がかかります。
 
 - AquesTalk pico LSI のバージョンをシリアルモニタに表示します。
@@ -212,13 +217,13 @@ AquesTalk pico LSI の EEPROM データをシリアルモニタに表示しま�
 ## loop()
 ボタンを押すと、ソースコードにある文字列の配列から 1 つの文字列を発声します。
 
-- ボタン A  
+- ボタン A
 前回発声した 1 つ前のものを発声します。初期値は 15 番目です。
 
-- ボタン B  
+- ボタン B
 前回発声したものを再度発声します。初期値は 0 番目です。
 
-- ボタン C  
+- ボタン C
 前回発声した 1 つ後のものを発声します。初期値は 1 番目です。
 
 # ライブラリ

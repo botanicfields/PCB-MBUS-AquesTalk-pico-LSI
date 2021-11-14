@@ -168,14 +168,14 @@ J3 は、スタンドアロンモードで使用する PC0-3 および GND の�
 ## (2) Sleep 信号
 AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために Sleep が必要です。
 
-| | GPIO | AquesTalk pico LSI |
+|ジャンパ| GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|
 |JP4|13|Sleep|
 
 ## (3) 音声信号の取り込み
 AquesTalk pico LSI の音声出力を GPIO35 から M5Stack に取り込むことができます。モジュール基板に載せるのが ATP3011 の場合は JP5 を、ATP3012 の場合は JP6 をハンダでショートします。出荷時は全てオープンです。
 
-| | GPIO | AquesTalk pico LSI |
+|ジャンパ| GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|
 |JP5|35|Analog Out of ATP3011|
 |JP6|35|Analog Out of ATP3012|
@@ -183,7 +183,7 @@ AquesTalk pico LSI の音声出力を GPIO35 から M5Stack に取り込むこ�
 ## (4) パワーアンプのシャットダウン
 JP7 はパワーアンプのシャットダウン（SD: Shut Down）信号を GND に接続し、常に動作状態とします。JP7 のはんだを取り除きオープンにすると、AquesTalk pico LSI の PLAY 信号（負極性）がシャットダウン信号となり、音声再生時以外はパワーアンプをシャットダウンすることができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズ（短絡）です。
 
-| |AquesTalk pico LSI|Power Amplifier|
+|ジャンパ|AquesTalk pico LSI|Power Amplifier|
 |:-:|:-:|:-:|
 |JP7 Open|Play(Low-Active)|Shut Down|
 |JP7 Close|- (Low)|Shut Down|
@@ -282,14 +282,14 @@ AquesTalk pico LSI を接続する I2C と I2C アドレスを指定します。
 AquesTalk pico LSI と SPI でインタフェースする派生クラスです。
 
 ### int Begin(SPIClass &spi, int ss);
-    AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
-    - SS: Slave Select
+AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
+- SS: Slave Select
 
 ## 5.4 BF_AquesTalkPicoSerial.h
-    AquesTalk pico LSI と UART でインタフェースする派生クラスです。
+AquesTalk pico LSI と UART でインタフェースする派生クラスです。
 
 ### int Begin(Stream &stream);
-    AquesTalk pico LSI を接続する UART を指定します。
+AquesTalk pico LSI を接続する UART を指定します。
 
 # 解説記事
 Qiita: [AquesTalk pico LSI を M5Stack の UART, I2C, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

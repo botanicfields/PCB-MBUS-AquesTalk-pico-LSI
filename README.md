@@ -7,7 +7,7 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
 ### 組み立て例
-<img src="./image/module1.JPG" width=300> <img src="./image/module2.JPG" width=300> <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300> 
+<img src="./image/module1.JPG" width=300> <img src="./image/module2.JPG" width=300> <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300>
 
 ## 1.1 特徴
 - 28 ピン DIP タイプの AquesTalk pico LSI 1 個を搭載できます。
@@ -44,7 +44,7 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - スピーカー  
 4 ～ 8Ω 程度、1W 以上が望ましいです
 - 工具類  
-ハンダ、ハンダごて、ニッパー、六角レンチ(0.5mm)、カッターなど
+ハンダ、ハンダごて、ニッパー、六角レンチ(0.5mm)、カッター、ピンセットなど
 - M5Stack  
 サンプルプログラムは、M5Stack Core Basic で動作確認しています
 - Arudino-IDE が動作する環境  
@@ -74,13 +74,13 @@ IC ソケットを使用すると、プロトモジュールのモールドに�
 <img src="./image/socket1.JPG" width=300> <img src="./image/socket2.JPG" width=300>
 
 ### その他の端子について
-J2 は、ICSP です。コネクタ等は実装されていません。使用する場合、ピンヘッダをハンダ付けするなどの処置が必要です。ICSP の VCC は AquesTalk pico LSI の電源端子に繋がっているほか、M5Stack の 3.3V にも繋がっています。ICSP を使用する場合は、モジュール基板を M5Stack から切り離し、単体にして接続してください。  
-J3 は、スタンドアロンモードで使用する PC0-3 信号および GND の端子です。コネクタ等は実装されていません。使用する場合は信号ケーブルを直接ハンダ付けするなどの処置が必要です。
+J2 は、ICSP です。コネクタ等は実装していません。使用には、ピンヘッダをハンダ付けするなどの処置が必要です。ICSP の VCC は AquesTalk pico LSI の電源端子に繋がっているほか、M5Stack の 3.3V にも繋がっています。ICSP は、モジュール基板を M5Stack から切り離し、単体にして接続してください。  
+J3 は、スタンドアロンモードで使用する PC0-3 および GND の端子です。コネクタ等は実装していません。使用には信号ケーブルを直接はんだ付けするなどの処置が必要です。
 
 - ICSP: In Circuit Serial Programming
 
 ### スタンドアロン接続例
-「M5Stack用 AquesTalk pico LSI モジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板15」を接続しています。M5Stack の電源とリセットを使用します。
+「M5Stack用 AquesTalk pico LSI モジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板15」を接続しています。M5Stack の電源とリセットを使用しています。
 - [M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
 - [ダイオードマトリクススイッチ15基板](https://www.switch-science.com/catalog/7371/)
 
@@ -89,9 +89,7 @@ J3 は、スタンドアロンモードで使用する PC0-3 信号および GND
 # 3. モジュールの設定（DIP スイッチ）
 
 ## 3.1 DIP スイッチによる動作モード・通信モードの設定
-動作モード、および使用するインタフェース（通信モード）に合わせて、モジュール基板上の DIP スイッチを設定します。設定にはピンセットなどが必要です。  
-おすすめは I2C 接続です。出荷時の設定は、セーフモード、I2C 接続です。  
-インタフェース毎の設定を次項以降で説明しています。
+動作モード、および使用するインタフェース（通信モード）に合わせて、モジュール基板上の DIP スイッチを設定します。設定にはピンセットなどが必要です。おすすめは I2C 接続です。出荷時の設定は、セーフモード、I2C 接続です。インタフェース毎の設定を次項以降で説明しています。
 
 |DIPスイッチ 1 |DIPスイッチ 2 |DIPスイッチ 3 |DIPスイッチ 4 |動作モード|通信モード|
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -159,85 +157,81 @@ J3 は、スタンドアロンモードで使用する PC0-3 信号および GND
 - MISO: Master-In Slave-Out
 - SS: Slave Select
 
-使用するインタフェースに合わせてジャンパを、はんだで接続します。  
-I2C の場合は JP1, JP2, JP3 を全てオープン（はんだ接続なし）のままで使用できます。  
-他の用途に影響がなければ JP1, JP2, JP3 をショートすることで全てのインタフェースを使用可能です。  
-出荷時は全てオープンです。
+使用するインタフェースに合わせてジャンパを、はんだで接続します。I2C の場合は JP1, JP2, JP3 を全てオープン（はんだ接続なし）のままで使用できます。他の用途に影響がなければ JP1, JP2, JP3 をクローズ（短絡）することで全てのインタフェースを使用可能です。出荷時は全てオープンです。
 
 |インタフェース|JP1|JP2|JP3|AquestTalk pico LSI ピン=GPIO|
 |:-:|:-:|:-:|:-:|:- |
 |I2C| - | - | - |SDA=21, SCL=22|
-|SPI| - |Short|Short|MOSI=23, MISO=19, SCK=18, SS=5|
-|UART|Short| - | - |TX=16, RX=17|
+|SPI| - |Close|Close|MOSI=23, MISO=19, SCK=18, SS=5|
+|UART|Close| - | - |TX=16, RX=17|
 
 ## (2) Sleep 信号
-    AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。  
-    ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために Sleep が必要です。
+AquesTalk pico LSI の Sleep ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために Sleep が必要です。
 
 | | GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|
 |JP4|13|Sleep|
 
-
-
-### 音声信号の取り込み
-    AquesTalk pico LSI の音声出力を GPIO35 から M5Stack に取り込むことができます。モジュール基板に載せるのが ATP3011 の場合は JP5 を、ATP3012 の場合は JP6 をハンダでショートします。出荷時は全てオープンです。
+## (3) 音声信号の取り込み
+AquesTalk pico LSI の音声出力を GPIO35 から M5Stack に取り込むことができます。モジュール基板に載せるのが ATP3011 の場合は JP5 を、ATP3012 の場合は JP6 をハンダでショートします。出荷時は全てオープンです。
 
 | | GPIO | AquesTalk pico LSI |
 |:-:|:-:|:-:|
 |JP5|35|Analog Out of ATP3011|
 |JP6|35|Analog Out of ATP3012|
 
-### パワーアンプのシャットダウン
-    JP7 はパワーアンプのシャットダウン（SD: Shut Down）信号を GND に接続し、常に動作状態とします。JP7 のハンダを取り除きオープンにすると、AquesTalk pico LSI の PLAY 信号（負極性）がシャットダウン信号となり、音声再生時以外はパワーアンプをシャットダウンすることができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズです。
+## (4) パワーアンプのシャットダウン
+JP7 はパワーアンプのシャットダウン（SD: Shut Down）信号を GND に接続し、常に動作状態とします。JP7 のはんだを取り除きオープンにすると、AquesTalk pico LSI の PLAY 信号（負極性）がシャットダウン信号となり、音声再生時以外はパワーアンプをシャットダウンすることができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズ（短絡）です。
 
 | |AquesTalk pico LSI|Power Amplifier|
 |:-:|:-:|:-:|
 |JP7 Open|Play(Low-Active)|Shut Down|
 |JP7 Close|- (Low)|Shut Down|
 
-# サンプルプログラム
+# 4. サンプルプログラム
 AquesTalk pico LSI を M5Stack に接続し、I2C(Wire), SPI, UART(Serial) で動作させるプログラムです。デモの内容は同じです。Arduino-IDE 環境で使用します。モジュール基板の設定を予め使用するインタフェースに合わせておく必要があります。
 - I2C: Inte-Integrated Circuit
 - SPI: Serial Peripheral Interface
 - UART: Universal Asynchronous Receiver Transmitter
 
 ### BF-034_Wire フォルダ
-    AqeusTalk pico LSI を I2C で動作させるサンプルプログラムです。
+AqeusTalk pico LSI を I2C で動作させるサンプルプログラムです。
 
 ### BF-034_Spi フォルダ
-    AqeusTalk pico LSI を SPI で動作させるサンプルプログラムです。
+AqeusTalk pico LSI を SPI で動作させるサンプルプログラムです。
 
 ### BF-034_Serial フォルダ
-    AqeusTalk pico LSI を UART で動作させるサンプルプログラムです。
+AqeusTalk pico LSI を UART で動作させるサンプルプログラムです。
 
-## デモの内容
+## (1) デモの内容
 
 ### setup()
-- SLEEP ピンの処理（デフォルトでは実行する）
-モジュール基板の JP4 をショートすると GPIO13 が AquesTalk pico LSI の SLEEP ピンに接続します。GPIO13 を HIGH にして SLEEP でない通常状態にします。
+- SLEEP ピンの処理（デフォルトでは実行する）  
+JP4 をクローズ（短絡）すると、GPIO13 と AquesTalk pico LSI の SLEEP ピンとが接続します。GPIO13 を HIGH にして SLEEP でない状態にします。
 
-- UART スピード（ATP3011）を設定（UART のみ。デフォルトでは実行しない）
+- UART スピードを設定（ATP3011 が対象。UART のみ。デフォルト: 実行しない）  
 AquesTalk pico LSI (ATP3011) の UART スピードを設定します。GPIO13 が AquesTalk pico LSI の SLEEP ピンと接続している必要があります。
 
-- UART スピード（ATP3012）を書き換え（UART のみ。デフォルトでは実行しない）
+- UART スピードを書き換え（ATP3012 が対象。UART のみ。デフォルト: 実行しない）  
 AquesTalk pico LSI (ATP3012) の UART スピードを書き換えます。
 
-- I2Cアドレスを書き換え（I2C のみ。デフォルトでは実行しない）
+- I2Cアドレスを書き換え（I2C のみ。デフォルト: 実行しない）  
 AquesTalk pico LSI の I2C アドレスを書き換えます。
 
-- プリセットメッセージを書き込む（デフォルトでは実行しない）
+- プリセットメッセージを書き込む（デフォルト: 実行しない）  
 AquesTalk pico LSI にプリセットメッセージとして、ソースコード内のデータを書き込みます。実行には時間がかかります。
 
-- EEPROM データをダンプ（デフォルトでは実行しない）
+- EEPROM データをダンプ（デフォルト: 実行しない）  
 AquesTalk pico LSI の EEPROM データをシリアルモニタに表示します。実行には時間がかかります。
 
-- AquesTalk pico LSI のバージョンをシリアルモニタに表示します。
-- チャイム J を発声します。
-- チャイム K を発声します。
+- AquesTalk pico LSI のバージョンをシリアルモニタに表示
 
-## loop()
-ボタンを押すと、ソースコードにある文字列の配列から 1 つの文字列を発声します。
+- チャイム J を発声
+
+- チャイム K を発声
+
+### loop()
+ボタンを押すと、ソースコードの preset_msg から 1 つを発声します。
 
 - ボタン A
 前回発声した 1 つ前のものを発声します。初期値は 15 番目です。
@@ -248,50 +242,50 @@ AquesTalk pico LSI の EEPROM データをシリアルモニタに表示しま�
 - ボタン C
 前回発声した 1 つ後のものを発声します。初期値は 1 番目です。
 
-# ライブラリ
+# 5. ライブラリ
 AquesTalk pico LSI を使用するためのライブラリです。
 
-## BF_AquesTalkPico.h
-    I2C, SPI, UART 共通の基本クラスです。接続するインタフェースに依って I2C(Wire), SPI, UART(Serial) のいずれかの派生クラスを使用する必要があります。
+## 5.1 BF_AquesTalkPico.h
+I2C, SPI, UART 共通の基本クラスです。接続するインタフェースに依って I2C(Wire), SPI, UART(Serial) のいずれかの派生クラスを使用する必要があります。
 
-### virtual int Send(const char* msg) = 0
-    AquesTalk pico LSI に文字列 msg を送信します。送信の様子をシリアルモニタに出力します。純粋仮想関数として定義し、使用するインタフェースに合わせて派生クラスで実装します。
+### (1) virtual int Send(const char* msg) = 0
+AquesTalk pico LSI に文字列 msg を送信します。送信の様子をシリアルモニタに出力します。純粋仮想関数として定義し、使用するインタフェースに合わせて派生クラスで実装します。
 
-### virtual size_t Recv(char* res, size_t res_size) = 0
-    AquesTalk pico LSI から文字列を受信します。受信完了は、'>' または '*' で判断します。純粋仮想関数として定義し、使用するインタフェースに合わせて派生クラスで実装します。
+### (2) virtual size_t Recv(char* res, size_t res_size) = 0
+AquesTalk pico LSI から文字列を受信します。受信完了は、'>' または '*' で判断します。純粋仮想関数として定義し、使用するインタフェースに合わせて派生クラスで実装します。
 
-### int ShowRes(int res_length_to_show = 1)
-    AquesTalk pico LSI からの応答をシリアルモニタに出力します。res_length_to_show に 2 を渡すと、応答が 1 文字以下の場合にシリアルモニタへの出力を抑止でき、I2C、SPI のポーリングによる応答が正常 ('>') の場合のシリアルモニタへの出力を省略できます。
+### (3) int ShowRes(int res_length_to_show = 1)
+AquesTalk pico LSI からの応答をシリアルモニタに出力します。res_length_to_show に 2 を渡すと、応答が 1 文字以下の場合にシリアルモニタへの出力を抑止でき、I2C、SPI のポーリングによる応答が正常 ('>') の場合のシリアルモニタへの出力を省略できます。
 
-### int DumpEeprom()
-    AquesTalk pico LSI の EEPROM (アドレス 0x000-0x3FF) の値をシリアルモニタに出力します。
+### (4) int DumpEeprom()
+AquesTalk pico LSI の EEPROM (アドレス 0x000-0x3FF) の値をシリアルモニタに出力します。
 
-### int WriteEeprom(int address, int data)
-    AquesTalk pico LSI の EEPROM にデータを書き込みます。
+### (5) int WriteEeprom(int address, int data)
+AquesTalk pico LSI の EEPROM にデータを書き込みます。
 
-### int WritePresetMsg(const char* msg[], int num_of_msg)
-    AquesTalk pico LSI の EEPROM にプリセットメッセージを書き込みます。書き込みの様子をシリアルモニタに出力します。
+### (6) int WritePresetMsg(const char* msg[], int num_of_msg)
+AquesTalk pico LSI の EEPROM にプリセットメッセージを書き込みます。書き込みの様子をシリアルモニタに出力します。
 
-### int WriteSerialSpeed(int serial_speed)
-    AquesTalk pico LSI (ATP3012) のシリアル通信速度を書き換えます。
+### (7) int WriteSerialSpeed(int serial_speed)
+AquesTalk pico LSI (ATP3012) のシリアル通信速度を書き換えます。
 
-### int WriteI2cAddress(int i2c_address)
-    AquesTalk pico LSI の I2C アドレスを書き換えます。
+### (8) int WriteI2cAddress(int i2c_address)
+AquesTalk pico LSI の I2C アドレスを書き換えます。
 
-## BF_AquesTalkPicoWire.h
-    AquesTalk pico LSI と I2C でインタフェースする派生クラスです。
+## 5.2 BF_AquesTalkPicoWire.h
+AquesTalk pico LSI と I2C でインタフェースする派生クラスです。
 
 ### int Begin(TwoWire &wire, int i2c_address = 0x2e);
-    AquesTalk pico LSI を接続する I2C と I2C アドレスを指定します。
+AquesTalk pico LSI を接続する I2C と I2C アドレスを指定します。
 
-## BF_AquesTalkPicoSpi.h
-    AquesTalk pico LSI と SPI でインタフェースする派生クラスです。
+## 5.3 BF_AquesTalkPicoSpi.h
+AquesTalk pico LSI と SPI でインタフェースする派生クラスです。
 
 ### int Begin(SPIClass &spi, int ss);
     AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
     - SS: Slave Select
 
-## BF_AquesTalkPicoSerial.h
+## 5.4 BF_AquesTalkPicoSerial.h
     AquesTalk pico LSI と UART でインタフェースする派生クラスです。
 
 ### int Begin(Stream &stream);

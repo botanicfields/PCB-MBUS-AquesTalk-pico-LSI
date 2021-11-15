@@ -292,4 +292,4 @@ AquesTalk pico LSI と UART でインタフェースする派生クラスです�
 AquesTalk pico LSI を接続する UART を指定します。
 
 # 6. 参考
-Qiita: [AquesTalk pico LSI を M5Stack の UART, I2C, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)
+Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

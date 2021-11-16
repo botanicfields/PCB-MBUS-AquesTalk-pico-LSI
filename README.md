@@ -2,11 +2,13 @@
 MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
-　「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。AquesTalk pico 　LSI の詳細は、データシートを参照ください。
+　「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。AquesTalk pico LSI の詳細は、データシートを参照ください。
 - [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
 ### 組み立て例
+　組み立てにはハンダ付けが必要です。
+
 左側: ATP3011, 右側: ATP3012  
 <img src="./image/module1.JPG" width=300> <img src="./image/module2.JPG" width=300>  
 写真右: M5Stack 取り付け例  
@@ -14,25 +16,32 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 
 ## 1.1 特徴
 - AquesTalk pico LSI（28 ピン DIP タイプ）1 個を搭載できます。
-- ATP3011, ATP3012 の両方の AquesTalk pico LSI に対応しています。
-- プロトモジュール（別売）のモールドを流用し、M5Stack に取り付けできます。
+- AquesTalk pico LSI の ATP3011, ATP3012 の両方に対応しています。
 - パワーアンプ（LM4871）を内蔵し、スピーカーを直接駆動できます。
 - スピーカー以外のケーブル接続が不要です。
+- プロトモジュール（別売）のモールドを流用し、M5Stack に取り付けできます。
+- AquestTalk pico LSI を 3.3V で動作させ、M-BUS に直結できます。
 - DIP スイッチで動作モード・通信モードを設定できます。
 - インタフェースを I2C, UART, SPI から選べます。
-- AquestTalk pico LSI を 3.3V で動作させ、M-BUS に直結できます。
 - スタンドアロンモードのためのランドがあります。
+
+I2C: Inte-Integrated Circuit  
+UART: Universal Asynchronous Receiver Transmitter  
+SPI: Serial Peripheral Interface
 
 ## 1.2 商品内容
 - M-BUS モジュール基板（半完成品）1枚  
 - スピーカーケーブル 1 組（2 ピン PH 相当コネクタ付き、20cm 片端ストリップ済）  
 （秋月電子通商扱い）コネクタ付コード２Ｐ（Ａ）　（赤白）[DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/)
-- 説明書
+- 説明書 1 部
+
+※ AquesTalk pico LSI は付属しません。  
+※ プロトモジュールは付属しません。  
+※ スピーカは付属しません
 
 ### 商品写真
 写真左: 内容物、写真右: モジュール基板裏面  
-<img src="./image/product1.JPG" width=300> <img src="./image/product2
-.JPG" width=300>
+<img src="./image/product1.JPG" width=300> <img src="./image/product2.JPG" width=300>
 
 ## 1.3 別途必要なもの
 - AquesTalk pico LSI（秋月電子通商扱い）  
@@ -117,9 +126,9 @@ Arduino-IDE: Ver.1.18.16 以降, Boards Manager: M5Stack 2.0.0 以降, Library: 
 
 |ジャンパ|GPIO|AquesTalk pico LSI|出荷時|
 |:-:|:-:|:-|:-:|
-|JP1|16|UART-TX (Transmit)|オープン|
-|JP2|19|SPI-MISO (Master-In Slave-Out)|オープン|
-|JP3|5|SPI-SS (Slave Select)|オープン|
+|JP1|16|UART-TX|オープン|
+|JP2|19|SPI-MISO|オープン|
+|JP3|5|SPI-SS|オープン|
 |JP4|13|SLEEP|オープン|
 |JP5|35|Analog Out of ATP3011|オープン|
 |JP6|35|Analog Out of ATP3012|オープン|
@@ -134,8 +143,14 @@ Arduino-IDE: Ver.1.18.16 以降, Boards Manager: M5Stack 2.0.0 以降, Library: 
 |UART|クローズ| - | - |TX = 16, RX = 17|
 |SPI| - |クローズ|クローズ|MOSI = 23, MISO = 19, SCK = 18, SS = 5|
 
+- SDA (serial DAta)
+- SCL (Serial CLock)
+- RX (Receive)
+- TX (Transmit)
+- MISO (Master In Slave Out)
 - MOSI (Master Out Slave In)
 - SCK (Serial ClocK)
+- SS (Slave Select)
 
 ### (2) JP4 SLEEP 信号
 　AquesTalk pico LSI の SLEEP ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために SLEEP の接続が必要です。出荷時はオープンです。
@@ -148,9 +163,6 @@ Arduino-IDE: Ver.1.18.16 以降, Boards Manager: M5Stack 2.0.0 以降, Library: 
 
 # 4. サンプルプログラム
 　AquesTalk pico LSI を M5Stack に接続し、I2C(Wire), UART(Serial), SPI で動作させるプログラムです。デモの内容は同じです。Arduino-IDE 環境で使用します。モジュール基板の設定を予め使用するインタフェースに合わせておく必要があります。
-- I2C: Inte-Integrated Circuit
-- UART: Universal Asynchronous Receiver Transmitter
-- SPI: Serial Peripheral Interface
 
 ### BF-034_Wire フォルダ
 AqeusTalk pico LSI を I2C で動作させるサンプルプログラムです。
@@ -247,7 +259,6 @@ AqeusTalk pico LSI を SPI で動作させるサンプルプログラムです�
 
 ### int Begin(SPIClass &spi, int ss);
 　AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
-- SS: Slave Select
 
 # 6. 参考
 Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

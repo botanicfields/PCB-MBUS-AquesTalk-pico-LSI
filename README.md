@@ -144,14 +144,14 @@ Arduino-IDE: Ver.1.18.16 以降, Boards Manager: M5Stack 2.0.0 以降, Library: 
 |UART|クローズ| - | - |TX = 16, RX = 17|
 |SPI| - |クローズ|クローズ|MOSI = 23, MISO = 19, SCK = 18, SS = 5|
 
-- SDA (serial DAta)
-- SCL (Serial CLock)
-- RX (Receive)
-- TX (Transmit)
-- MISO (Master In Slave Out)
-- MOSI (Master Out Slave In)
-- SCK (Serial ClocK)
-- SS (Slave Select)
+- SDA: Serial DAta
+- SCL: Serial CLock
+- RX: Receive
+- TX: Transmit
+- MISO: Master In Slave Out
+- MOSI: Master Out Slave In
+- SCK: Serial ClocK
+- SS: Slave Select
 
 ### (2) JP4 SLEEP 信号
 　AquesTalk pico LSI の SLEEP ピンを GPIO13 に接続できます。GPIO13 = Low で AquesTalk pico LSI がスリープ状態になります。ATP3011 の UART 接続において 9600bps より速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために SLEEP の接続が必要です。出荷時はオープンです。

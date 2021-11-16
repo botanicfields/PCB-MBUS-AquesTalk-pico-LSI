@@ -25,6 +25,7 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - インタフェースを I2C, UART, SPI から選べます。
 - スタンドアロンモードのためのランドがあります。
 
+DIP: Dual In-line Package  
 I2C: Inte-Integrated Circuit  
 UART: Universal Asynchronous Receiver Transmitter  
 SPI: Serial Peripheral Interface

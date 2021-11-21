@@ -3,7 +3,8 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
 　「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。
-- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール](https://www.switch-science.com/)
+- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
+- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール](https://www.switch-science.com/xxxx)
 
 　AquesTalk pico LSI の詳細は、データシートを参照ください。
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
@@ -21,11 +22,12 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - AquesTalk pico LSI（28 ピン DIP タイプ）1 個を搭載できます。
 - AquesTalk pico LSI の ATP3011, ATP3012 の両方に対応しています。
 - パワーアンプ（LM4871）を内蔵し、スピーカーを直接駆動できます。
-- スピーカー以外のケーブル接続が不要です。
-- プロトモジュール（別売）のモールドを流用し、M5Stack に取り付けできます。
 - AquestTalk pico LSI を 3.3V で動作させ、M-BUS に直結できます。
+- プロトモジュール（別売）のモールドを流用し、M5Stack に取り付けできます。
+- スピーカー以外のケーブル接続が不要です。
 - DIP スイッチで動作モード・通信モードを設定できます。
 - インタフェースを I2C, UART, SPI から選べます。
+- AquesTalk pico LSI の音声出力を M-BUS から取り込めます。
 - スタンドアロンモードのためのランドがあります。
 
 DIP: Dual In-line Package  
@@ -264,6 +266,12 @@ AqeusTalk pico LSI を SPI で動作させるサンプルプログラムです�
 
 ### int Begin(SPIClass &spi, int ss);
 　AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
+
+### int Begin(SPIClass &spi, int ss);
+　AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
+
+## 5.5 BF_AdcWave.h
+　GPIO35 から取り込んだ音声データを M5Stack の LCD に表示します。表示は簡易的なものです。
 
 # 6. 参考
 Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

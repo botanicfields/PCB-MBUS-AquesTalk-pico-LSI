@@ -4,6 +4,7 @@
 
 #include <M5Stack.h>
 #include "BF_AquesTalkPicoSerial.h"
+#include "BF_M5AdcWave.h"
 
 AquesTalkPicoSerial aqtp;
 
@@ -112,13 +113,14 @@ void setup()
     delay(200);
   }
 
+  AdcWaveInit();
+
   loop_last_ms = millis();
 }
 
 void loop()
 {
   M5.update();
-  aqtp.ShowRes(2);
 
   int num_of_msg = sizeof(preset_msg)/sizeof(preset_msg[0]);
   if (M5.BtnA.wasReleased()) {
@@ -136,6 +138,9 @@ void loop()
       msg_select = 0;
     aqtp.Send(preset_msg[msg_select]);
   }
+
+  aqtp.ShowRes(2);
+  AdcWave();
 
   delay(loop_ms + loop_last_ms - millis());
   loop_last_ms = millis();

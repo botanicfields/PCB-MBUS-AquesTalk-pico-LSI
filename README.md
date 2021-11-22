@@ -2,11 +2,13 @@
 MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
-　「M5Stack用 AquesTalk pico LSI モジュール」は、市販の音声合成専用 LSI「AquesTalk pico LSI」（別売）を M-BUS モジュールとして M5Stack に取り付けるための半完成基板です。
-- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
-- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール](https://www.switch-science.com/xxxx)
+　「M5Stack用 AquesTalk pico LSIモジュール基板」は、市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。
+- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/xxxx)
 
-　AquesTalk pico LSI の詳細は、データシートを参照ください。
+### 動作例
+- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
+
+　AquesTalk pico LSIの詳細は、データシートを参照ください。
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
@@ -105,7 +107,7 @@ Arduino-IDE: Ver.1.18.16 以降, Boards Manager: M5Stack 2.0.0 以降, Library: 
 ### スタンドアロン接続例
 　「M5Stack用 AquesTalk pico LSI モジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板15」を接続しています。M5Stack の電源とリセットを使用しています。
 - [スイッチサイエンス: M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
-- [スイッチサイエンス: ダイオードマトリクススイッチ15基板](https://www.switch-science.com/catalog/7371/)
+- [スイッチサイエンス: ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/xxxx/)
 
 <img src="./image/socket3.JPG" width=300>
 

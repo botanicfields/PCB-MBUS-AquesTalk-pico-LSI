@@ -5,12 +5,12 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 　「M5Stack用 AquesTalk pico LSIモジュール基板」は、市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。
 - [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/xxxx)
 
-### 動作例
-- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
-
 　AquesTalk pico LSIの詳細は、データシートを参照ください。
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
+
+### 動作例
+- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
 
 ### 組み立て例
 　組み立てにはハンダ付けが必要です。

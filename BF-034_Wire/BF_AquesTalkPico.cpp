@@ -132,7 +132,7 @@ int AquesTalkPico::WriteSerialSpeed(int serial_speed)
 
 int AquesTalkPico::WriteI2cAddress(int i2c_address)
 {
-  WriteEeprom(0x006, i2c_address);
+  return WriteEeprom(0x006, i2c_address);
 }
 
 char AquesTalkPico::HexChar(int n) {

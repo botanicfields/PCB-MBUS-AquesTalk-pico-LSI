@@ -107,7 +107,7 @@ Arduino-IDE: Ver.1.18.16以降, Boards Manager: M5Stack 2.0.0以降, Library: M5
 - ICSP: In Circuit Serial Programming
 
 ### スタンドアロン接続例
-　「M5Stack用 AquesTalk pico LSIモジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板15」を接続しています。M5Stack の電源とリセットを使用しています。
+　「M5Stack用 AquesTalk pico LSIモジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板16」を接続しています。M5Stack の電源とリセットを使用しています。
 - [スイッチサイエンス: M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
 - [スイッチサイエンス: ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/xxxx/)
 

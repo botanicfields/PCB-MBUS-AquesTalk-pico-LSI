@@ -38,23 +38,14 @@ void setup()
   const bool lcd_enable(true);
   const bool sd_enable(true);
   const bool serial_enable(true);
-  const bool i2c_enable(true);
+  const bool i2c_enable(true);  // SDA=GPIO21. SCL=GPIO22, Freqency=100kHz
   M5.begin(lcd_enable, sd_enable, serial_enable, i2c_enable);
-
-  // defined by M5Stack
-  //  const int wire_sda(21);  // GPIO21 as default
-  //  const int wire_scl(22);  // GPIO22 as default
-  //  const int wire_frequency(100000);  // 100kHz as default
-  //  Wire.begin(wire_sda, wire_scl, wire_frequency);
-  //  aqtp.Begin(Wire);  // for default
-
   aqtp.Begin(Wire);          // default or safe mode
 //  aqtp.Begin(Wire, 0xXX);  // i2c address customized
 
   // designate "true" if sleep pin is connected
   if (true /*false*/) {
     const int aqtp_sleep_pin(13);  // GPIO13 for sleep pin of m-bux module
-//    const int aqtp_sleep_pin( 5);  // GPIO5  for sleep pin of grove board
     pinMode(aqtp_sleep_pin, OUTPUT);
     digitalWrite(aqtp_sleep_pin, HIGH);
   }

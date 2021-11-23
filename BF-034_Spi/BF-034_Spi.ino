@@ -55,7 +55,6 @@ void setup()
   // designate "true" if sleep pin is connected
   if (true /*false*/) {
     const int aqtp_sleep_pin(13);  // GPIO13 for sleep pin of m-bux module
-//    const int aqtp_sleep_pin( 5);  // GPIO5  for sleep pin of grove board
     pinMode(aqtp_sleep_pin, OUTPUT);
     digitalWrite(aqtp_sleep_pin, HIGH);
   }

@@ -273,7 +273,7 @@ AqeusTalk pico LSI を SPI で動作させるサンプルプログラムです�
 　AquesTalk pico LSI を接続する SPI と SS として使用する GPIO を指定します。
 
 ## 5.5 BF_AdcWave.h
-　GPIO35 から取り込んだ音声データを M5Stack の LCD に表示します。表示は簡易的なものです。
+　GPIO35 から取り込んだ音声データを M5Stack の LCD に表示します。表示は簡易的なものです。使用するAquesTalk pico LSI の種類（ATP3011 または ATP3012）に合わせて、JP5 または JP6 をクローズ（短絡）しておく必要があります。
 
 # 6. 参考
 Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

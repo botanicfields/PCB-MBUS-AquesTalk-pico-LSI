@@ -3,12 +3,14 @@
 MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
-　「M5Stack用 AquesTalk pico LSIモジュール基板」は、市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。
-- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/xxxx)
+　市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。
 
 　AquesTalk pico LSIの詳細は、データシートを参照ください。
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
+
+### 委託販売
+- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/7624)
 
 ### 動作例
 - [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
@@ -22,8 +24,8 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300>
 
 ## 1.1 特徴
-- AquesTalk pico LSI（28 ピン DIP タイプ）1個を搭載できます。
-- AquesTalk pico LSIのATP3011, ATP3012の両方に対応しています。
+- AquesTalk pico LSI（28ピン DIPタイプ）1個を搭載できます。
+- ATP3011, ATP3012の両方に対応しています。
 - パワーアンプ（LM4871）を内蔵し、スピーカーを直接駆動できます。
 - AquestTalk pico LSIを3.3Vで動作させ、M-BUSに直結できます。
 - プロトモジュール（別売）のモールドを流用し、M5Stackに取り付けできます。
@@ -47,7 +49,7 @@ SPI: Serial Peripheral Interface
 
 ※ AquesTalk pico LSIは付属しません。  
 ※ プロトモジュールは付属しません。  
-※ スピーカーは付属しません
+※ スピーカーは付属しません。
 
 ### 商品写真
 写真左: 内容物、写真右: モジュール基板裏面  
@@ -68,26 +70,28 @@ SPI: Serial Peripheral Interface
 - プロトモジュール（スイッチサイエンス扱い）  
 [M5Stack用プロトモジュール](https://www.switch-science.com/catalog/3650/)
 - スピーカー  
-4～8Ω程度、1W以上が望ましいです
+4～8Ω程度、1W以上が望ましいです。
 - 工具  
 ハンダ、ハンダごて、ニッパー、六角レンチ(0.5mm)、カッター、ピンセットなど
 - M5Stack  
-サンプルプログラムは、M5Stack Core Basicで動作を確認しています
+サンプルプログラムは、M5Stack Core Basicで動作を確認しています。
 - Arudino-IDEが動作する環境  
-Arduino-IDE: Ver.1.18.16以降, Boards Manager: M5Stack 2.0.0以降, Library: M5Stack 3.9.0以降
 
 # 2. モジュール基板の組み立て
 
 ## 2.1 AquesTalk pico LSI の取り付け
-　別売の AquestTalk pico LSI（28 ピン DIP タイプ）1個を取り付けます。ATP3011とATP3012とでは挿入する穴が異なります。基板上のシルク印刷に従ってピンを挿入しハンダ付けします。モジュール基板裏面から飛び出しているピンを短く切ってください。
+　別売のAquestTalk pico LSI（28ピンDIPタイプ）1個を取り付けます。ATP3011とATP3012とでは挿入する穴が異なります。基板上のシルク印刷に従ってピンを挿入しハンダ付けします。モジュール基板裏面から飛び出しているピンを短く切ってください。
 
 左: ATP3011, 右: ATP3012  
 <img src="./image/pcb1.JPG" width=300> <img src="./image/pcb2.JPG" width=300> <img src="./image/pcb3.JPG" width=300> 
 
 ## 2.2 モールドの取り付け
-　プロトモジュールのモールドおよびネジ4本を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドをモジュール基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモジュールから切り取ります。
+　プロトモジュール（別売）のモールドおよびネジ4本を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドを基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモールドから切り取ります。
 
 <img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300> <img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
+
+## 2.3 スピーカーの接続
+　付属のケーブルでJ4とスピーカー（別売）を接続します。GNDには接続しないでください。
 
 ### ICソケットは使用できません
 　ICソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で1列タイプのICソケットを使用するとATP3011とATP3012を差し換えることができます。モジュール基板裏面からのピンの飛び出しの対処も大変になります。
@@ -107,16 +111,17 @@ Arduino-IDE: Ver.1.18.16以降, Boards Manager: M5Stack 2.0.0以降, Library: M5
 - ICSP: In Circuit Serial Programming
 
 ### スタンドアロン接続例
-　「M5Stack用 AquesTalk pico LSIモジュール」を「M-Busエクステンション基板」に載せ、「ダイオードマトリクススイッチ基板16」を接続しています。M5Stack の電源とリセットを使用しています。
-- [スイッチサイエンス: M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
-- [スイッチサイエンス: ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/xxxx/)
+　M5Stack用 AquesTalk pico LSIモジュールをM-Busエクステンションに載せ、ダイオードマトリクススイッチ基板16を接続しています。M5Stackの電源とリセットを使用しています。  
+（スイッチサイエンス扱い）
+- [M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
+- [ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/7626/)
 
 <img src="./image/socket3.JPG" width=300>
 
 # 3. モジュールの設定
 
 ## 3.1 DIPスイッチによる動作モード・通信モードの設定
-　動作モードおよび使用するインタフェース（通信モード）に合わせて、モジュール基板上のDIPスイッチを設定します。設定にはピンセットなどが必要です。おすすめはI2C接続です。出荷時の設定は、セーフモード・I2C 接続です。DIPスイッチの設定はリセット時に反映されます。AquesTalk pico LSIのリセットはM5Stackのリセットに繋がっています。
+　動作モードおよび使用するインタフェース（通信モード）に合わせて、モジュール基板上のDIPスイッチを設定します。設定にはピンセットなどが必要です。おすすめはI2C接続です。出荷時の設定は、セーフモード・I2C接続です。DIPスイッチの設定はリセット時に反映されます。AquesTalk pico LSIのリセットはM5Stackのリセットに繋がっています。
 
 | 1 | 2 | 3 | 4 |動作モード|通信モード|備考|
 |:-:|:-:|:-:|:-:|:-:|:-:|:- |
@@ -164,13 +169,13 @@ Arduino-IDE: Ver.1.18.16以降, Boards Manager: M5Stack 2.0.0以降, Library: M5
 - SS: Slave Select
 
 ### (2) JP4: SLEEP 信号
-　AquesTalk pico LSIのSLEEPピンをGPIO13に接続できます。GPIO13=LowでAquesTalk pico LSIがスリープ状態になります。ATP3011のUART接続において9600bpsより速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」が必要であり、速度設定のために SLEEP の接続が必要です。出荷時はオープンです。
+　AquesTalk pico LSIのSLEEPピンをGPIO13に接続できます。GPIO13=LowでAquesTalk pico LSIがスリープ状態になります。ATP3011のUART接続において9600bpsより速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」に設定し、速度設定のためにSLEEPを使用します。出荷時はオープンです。
 
 ### (3) JP5, JP6: 音声信号の取り込み
-　AquesTalk pico LSIの音声出力をGPIO35経由でM5Stackに取り込むことができます。モジュール基板に載せるのがATP3011の場合はJP5を、ATP3012の場合はJP6をハンダで短絡（クローズ）します。出荷時はオープンです。
+　AquesTalk pico LSIの音声出力をGPIO35経由でM5Stackに取り込むことができます。ATP3011の場合はJP5を、ATP3012の場合はJP6をハンダで短絡（クローズ）します。出荷時はオープンです。
 
 ### (4) JP7: パワーアンプのシャットダウン
-　JP7がクローズ（短絡）の場合、パワーアンプのシャットダウン（SD: Shut Down）信号をGNDに接続しパワーアンプを常に動作状態とします。JP7のハンダを取り除く（オープン）にすると、AquesTalk pico LSIのPLAY信号（負極性）がシャットダウン信号となり、音声再生時以外はパワーアンプをシャットダウンすることができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズ（短絡）です。
+　JP7がクローズ（短絡）の場合、パワーアンプのシャットダウン（SD: Shut Down）信号をGNDに接続しパワーアンプを常に動作状態とします。JP7のハンダを取り除く（オープン）にすると、AquesTalk pico LSIのPLAY信号（負極性）がシャットダウン信号となり、パワーアンプの消費電力を減らすことができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズ（短絡）です。
 
 # 4. サンプルプログラム
 　AquesTalk pico LSIをM5Stackに接続し、I2C(Wire), UART(Serial), SPIで動作させるプログラムです。デモの内容は同じです。Arduino-IDE環境で使用します。モジュール基板の設定を予め使用するインタフェースに合わせておく必要があります。
@@ -272,7 +277,7 @@ AqeusTalk pico LSIをSPIで動作させるサンプルプログラムです。
 　AquesTalk pico LSIを接続するSPIと、SSとして使用するGPIOを指定します。
 
 ## 5.5 BF_AdcWave.h
-　GPIO35から取り込んだ音声データをM5StackのLCDに表示します。表示は簡易的なものです。使用するAquesTalk pico LSIの種類（ATP3011またはATP3012）に合わせて、JP5またはJP6をクローズ（短絡）しておく必要があります。
+　GPIO35から取り込んだ音声データをM5StackのLCDに表示します。表示は簡易的なものです。使用するAquesTalk pico LSIの種類（ATP3011またはATP3012）に合わせて、JP5またはJP6を短絡（クローズ）する必要があります。
 
 # 6. 参考
 Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

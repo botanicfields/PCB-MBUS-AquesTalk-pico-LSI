@@ -3,17 +3,16 @@
 MBUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
-　市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。
-
+　市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。  
 　AquesTalk pico LSIの詳細は、データシートを参照ください。
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
 ### 委託販売
-- [スイッチサイエンス: M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/7624)
+（スイッチサイエンス扱い）[M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/7624)
 
 ### 動作例
-- [Youtube: M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
+（YouTube）[M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
 
 ### 組み立て例
 　組み立てにはハンダ付けが必要です。
@@ -24,7 +23,7 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300>
 
 ## 1.1 特徴
-- AquesTalk pico LSI（28ピン DIPタイプ）1個を搭載できます。
+- AquesTalk pico LSI（28ピンDIPタイプ）1個を搭載できます。
 - ATP3011, ATP3012の両方に対応しています。
 - パワーアンプ（LM4871）を内蔵し、スピーカーを直接駆動できます。
 - AquestTalk pico LSIを3.3Vで動作させ、M-BUSに直結できます。
@@ -44,7 +43,7 @@ SPI: Serial Peripheral Interface
 ## 1.2 商品内容
 - M-BUS モジュール基板（半完成品）1枚  
 - スピーカーケーブル 1組（2ピンPH相当コネクタ付き、20cm片端ストリップ済）  
-（秋月電子通商扱い）コネクタ付コード２Ｐ（Ａ）　（赤白）[DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/)
+（秋月電子通商扱い）[コネクタ付コード２Ｐ（Ａ）（赤白）DG01032-0045-01(C5679)](https://akizukidenshi.com/catalog/g/gC-05679/)
 - 説明書 1部
 
 ※ AquesTalk pico LSIは付属しません。  
@@ -57,18 +56,18 @@ SPI: Serial Peripheral Interface
 
 ## 1.3 別途必要なもの
 - AquesTalk pico LSI（秋月電子通商扱い）  
-音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ１－ＰＵ（ゆっくりな女性の音声）
-[ATP3011F1-PU](https://akizukidenshi.com/catalog/g/gI-06220/)  
-音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ４－ＰＵ（かわいい女性の音声）
-[ATP3011F4-PU](https://akizukidenshi.com/catalog/g/gI-05665/)  
-音声合成ＬＳＩ　ＡＴＰ３０１１Ｍ６－ＰＵ（男性の音声）
-[ATP3011M6-PU](https://akizukidenshi.com/catalog/g/gI-06225/)  
-音声合成ＬＳＩ　ＡＴＰ３０１２Ｆ６－ＰＵ（女性の音声明瞭版）
-[ATP3012F6-PU](https://akizukidenshi.com/catalog/g/gI-09973/)  
-音声合成ＬＳＩ　ＡＴＰ３０１２Ｒ５－ＰＵ（小型ロボットの音声）
-[ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)
-- プロトモジュール（スイッチサイエンス扱い）  
-[M5Stack用プロトモジュール](https://www.switch-science.com/catalog/3650/)
+[音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ１－ＰＵ（ゆっくりな女性の音声）
+ATP3011F1-PU](https://akizukidenshi.com/catalog/g/gI-06220/)  
+[音声合成ＬＳＩ　ＡＴＰ３０１１Ｆ４－ＰＵ（かわいい女性の音声）
+ATP3011F4-PU](https://akizukidenshi.com/catalog/g/gI-05665/)  
+[音声合成ＬＳＩ　ＡＴＰ３０１１Ｍ６－ＰＵ（男性の音声）
+ATP3011M6-PU](https://akizukidenshi.com/catalog/g/gI-06225/)  
+[音声合成ＬＳＩ　ＡＴＰ３０１２Ｆ６－ＰＵ（女性の音声明瞭版）
+ATP3012F6-PU](https://akizukidenshi.com/catalog/g/gI-09973/)  
+[音声合成ＬＳＩ　ＡＴＰ３０１２Ｒ５－ＰＵ（小型ロボットの音声）
+ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)
+- プロトモジュール  
+（スイッチサイエンス扱い）[M5Stack用プロトモジュール](https://www.switch-science.com/catalog/3650/)
 - スピーカー  
 4～8Ω程度、1W以上が望ましいです。
 - 工具  
@@ -97,10 +96,10 @@ SPI: Serial Peripheral Interface
 　ICソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で1列タイプのICソケットを使用するとATP3011とATP3012を差し換えることができます。モジュール基板裏面からのピンの飛び出しの対処も大変になります。
 
 - ICソケット（秋月電子通商扱い）  
-丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４
-[6604S-14](https://akizukidenshi.com/catalog/g/gP-03470/)  
-丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４
-[JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り  
+[丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４　
+6604S-14](https://akizukidenshi.com/catalog/g/gP-03470/)  
+[丸ピンＩＣ用ソケット　（シングル１４Ｐ）　１×１４　
+JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り  
 
 <img src="./image/socket1.JPG" width=300> <img src="./image/socket2.JPG" width=300>
 
@@ -111,11 +110,9 @@ SPI: Serial Peripheral Interface
 - ICSP: In Circuit Serial Programming
 
 ### スタンドアロン接続例
-　M5Stack用 AquesTalk pico LSIモジュールをM-Busエクステンションに載せ、ダイオードマトリクススイッチ基板16を接続しています。M5Stackの電源とリセットを使用しています。  
-（スイッチサイエンス扱い）
-- [M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)
-- [ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/7626/)
-
+　M5Stack用 AquesTalk pico LSIモジュールをM-Busエクステンションに載せ、ダイオードマトリクススイッチ16基板を接続しています。M5Stackの電源とリセットを使用しています。  
+（スイッチサイエンス扱い）[M-Busエクステンション基板キット](https://www.switch-science.com/catalog/7371/)  
+（スイッチサイエンス扱い）[ダイオードマトリクススイッチ16基板](https://www.switch-science.com/catalog/7626/)  
 <img src="./image/socket3.JPG" width=300>
 
 # 3. モジュールの設定

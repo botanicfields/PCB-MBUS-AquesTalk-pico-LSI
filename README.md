@@ -177,14 +177,18 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 # 4. サンプルプログラム
 　AquesTalk pico LSIをM5Stackに接続し、I2C(Wire), UART(Serial), SPIで動作させるプログラムです。デモの内容は同じです。Arduino-IDE環境で使用します。モジュール基板の設定を予め使用するインタフェースに合わせておく必要があります。
 
-### BF-034_Wire フォルダ
-AqeusTalk pico LSIをI2Cで動作させるサンプルプログラムです。
+### BF-034_Wireフォルダ
+　AqeusTalk pico LSIをI2Cで動作させるサンプルプログラムです。
 
-### BF-034_Serial フォルダ
-AqeusTalk pico LSIをUARTで動作させるサンプルプログラムです。
+### BF-034_Serialフォルダ
+　AqeusTalk pico LSIをUARTで動作させるサンプルプログラムです。
 
-### BF-034_Spi フォルダ
-AqeusTalk pico LSIをSPIで動作させるサンプルプログラムです。
+### BF-034_Spiフォルダ
+　AqeusTalk pico LSIをSPIで動作させるサンプルプログラムです。
+
+### BF-034_Clockフォルダ
+　M5StackのLCDに日付・時刻を表示する置時計のデモです。ボタンBで日付を音声で読み上げます。ボタンCで時刻を音声で読み上げます。AquesTalk pico LSIはI2C(Wire)を利用します。リセット後はsetupの状況を表示します。setupが完了しボタンCを押すと時計表示になります。以下のデモを流用しています。
+- GitHub: [botanicfields/PCB-MBUS-RTC](https://github.com/botanicfields/PCB-MBUS-RTC)
 
 ## (1) デモの内容
 
@@ -277,4 +281,4 @@ AqeusTalk pico LSIをSPIで動作させるサンプルプログラムです。
 　GPIO35から取り込んだ音声データをM5StackのLCDに表示します。表示は簡易的なものです。使用するAquesTalk pico LSIの種類（ATP3011またはATP3012）に合わせて、JP5またはJP6を短絡（クローズ）する必要があります。
 
 # 6. 参考
-Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)
+- Qiita: [AquesTalk pico LSI を M5Stack の I2C, UART, SPI で動かす](https://qiita.com/BotanicFields/items/fff644f408c291e5a5f0)

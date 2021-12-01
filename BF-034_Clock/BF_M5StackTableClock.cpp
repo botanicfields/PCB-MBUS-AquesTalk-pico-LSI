@@ -48,10 +48,10 @@ void SprStr(TFT_eSprite *spr, const char *str, const GFXfont *font, int fore_col
 void TableClockInit()
 {
   pinMode(pin_rtcx_clock_out, INPUT);
-  pinMode(pin_rtcx_interrupt35, INPUT);
+//  pinMode(pin_rtcx_interrupt35, INPUT);
   pinMode(pin_rtcx_interrupt13, INPUT);
 
-  attachInterrupt(pin_rtcx_interrupt35, RtcxInterrupt35, FALLING);
+//  attachInterrupt(pin_rtcx_interrupt35, RtcxInterrupt35, FALLING);
   attachInterrupt(pin_rtcx_interrupt13, RtcxInterrupt13, FALLING);
 
   M5.Lcd.fillScreen(TFT_BLACK);

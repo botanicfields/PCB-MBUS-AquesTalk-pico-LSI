@@ -9,7 +9,7 @@ MBUS Module of AquesTalk pico LSI for M5Stack
 - [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
 
 ### 委託販売
-（スイッチサイエンス扱い）[M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/7624)
+（スイッチサイエンス扱い）[M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/catalog/7624/)
 
 ### 動作例
 （YouTube）[M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)

@@ -4,7 +4,7 @@
 
 #include <M5Core2.h>
 #include "BF_AquesTalkPicoWire.h"
-//#include "BF_M5AdcWave.h"
+#include "BF_M5AdcWave.h"
 
 AquesTalkPicoWire aqtp;
 
@@ -83,7 +83,7 @@ void setup()
     delay(200);
   }
 
-//  AdcWaveInit();
+  AdcWaveInit();
 
   loop_last_ms = millis();
 }
@@ -110,7 +110,7 @@ void loop()
   }
 
   aqtp.ShowRes(2);
-//  AdcWave();
+  AdcWave();
 
   delay(loop_ms + loop_last_ms - millis());
   loop_last_ms = millis();

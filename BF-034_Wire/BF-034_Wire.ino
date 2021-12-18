@@ -29,9 +29,9 @@ const char* preset_msg[] = {
 };
 
 // for loop control
-const int loop_ms(100);     // 100ms
-int       loop_last_ms(0);  // loop control
-int       msg_select(0);
+const int loop_ms(100);  // 100ms
+unsigned int loop_last_ms(0);  // loop control
+int msg_select(0);
 
 void setup()
 {

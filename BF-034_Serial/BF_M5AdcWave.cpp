@@ -61,7 +61,7 @@ void AdcWaveInit()
 
 void AdcWave()
 {
-  int start_ms = millis();
+  unsigned int start_ms = millis();
 
   // read ADC for one frame of LCD
   for (int i = -100; i < fir_out_size; ++i) {

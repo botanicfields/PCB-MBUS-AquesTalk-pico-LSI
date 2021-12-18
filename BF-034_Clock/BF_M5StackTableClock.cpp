@@ -12,8 +12,8 @@ const int pin_rtcx_interrupt35(35);
 const int pin_rtcx_interrupt13(13);
 bool rtcx_interrupt35(false);
 bool rtcx_interrupt13(false);
-int  rtcx_interrupt35_ms(0);
-int  rtcx_interrupt13_ms(0);
+unsigned int rtcx_interrupt35_ms(0);
+unsigned int rtcx_interrupt13_ms(0);
 
 void RtcxInterrupt35()
 {

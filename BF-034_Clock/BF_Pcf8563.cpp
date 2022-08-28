@@ -346,7 +346,7 @@ size_t Pcf8563::ReadReg(int reg_start, size_t read_length)
   m_wire->beginTransmission(m_i2c_address);
   m_wire->write(reg_start);
   if (m_wire->endTransmission(!send_stop) != 0) {
-    Serial.print("[Pcf8563:ReadReg] ERROR write\n");
+    Serial.print("[PCF8563]ERROR ReadReg write\n");
     return 0;  // command error
   }
   m_wire->requestFrom(m_i2c_address, read_length);
@@ -354,7 +354,7 @@ size_t Pcf8563::ReadReg(int reg_start, size_t read_length)
   while (m_wire->available())
     m_reg[reg_start + i++] = m_wire->read();
   if (i != read_length)
-    Serial.print("[Pcf8563:ReadReg] ERROR read\n");
+    Serial.print("[PCF8563]ERROR ReadReg read\n");
   return i;
 }
 
@@ -366,7 +366,7 @@ int Pcf8563::WriteReg(int reg_start, size_t write_length)
     m_wire->write(m_reg[reg_start + i]);
   int return_code = m_wire->endTransmission();
   if (return_code != 0)
-    Serial.print("[Pcf8563:WriteReg] ERROR write\n");
+    Serial.print("[PCF8563]ERROR WriteReg\n");
   return return_code;
 }
 

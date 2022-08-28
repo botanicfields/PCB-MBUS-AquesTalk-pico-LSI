@@ -3,13 +3,14 @@
 // example
 
 #include <M5Core2.h>
+#include <Free_Fonts.h>
 #include "BF_AquesTalkPicoWire.h"
-#include "BF_M5AdcWave.h"
+#include "BF_M5AdcWave_Core2.h"
 
 AquesTalkPicoWire aqtp;
 
 const char* preset_msg[] = {
-// msssage must be less than 127 characters
+// message must be less than 127 characters
 // ....:....1....:....2....:....3....:....4....:....5....:....6....:....7....:....8....:....9....:....A....:....8....:....C....:..
   "re'-jide_su.yo'-koso wata'ku_sitati,sho'kka-e\r",
   "iti'jide_su.ittai,do'-natte/iru'node_suka zo'rutaisa\r",
@@ -28,42 +29,54 @@ const char* preset_msg[] = {
   "oyasumi/nasa'i.se'kaiwa,sho'kka-no/mono'de_su\r",
 };
 
-// for loop control
-const int loop_ms(100);  // 100ms
-unsigned int loop_last_ms(0);  // loop control
-int msg_select(0);
+//..:....1....:....2....:....3....:....4....:....5....:....6....:....7..
+// main
+enum play_command_t {
+  play_stop,
+  play_current,
+  play_next,
+  play_previous,
+  play_continuous,  // play continuously from current
+  play_forward,     // play continuously from next
+  play_backward,    // play continuously from previous
+};
+play_command_t play_command(play_stop);
+int msg_selected(0);
+const unsigned int msg_space(500);
+const unsigned int loop_period_ms(100);
+      unsigned int loop_last_ms;
 
 void setup()
 {
   const bool lcd_enable(true);
   const bool sd_enable(true);
   const bool serial_enable(true);
-  const bool i2c_enable(true);  // SDA=GPIO32. SCL=GPIO33
-  M5.begin(lcd_enable, sd_enable, serial_enable, i2c_enable, kMBusModeOutput);  // supply 5V to M-Bus modules 
+  const bool i2c_enable(true);  // // SDA=GPIO32. SCL=GPIO33, frequency = 100kHz
+  M5.begin(lcd_enable, sd_enable, serial_enable, i2c_enable, kMBusModeOutput);  // supply 5V to M-BUS modules
 
-  const int wire1_sda(21);
-  const int wire1_scl(22);
-  const int wire1_frq(100000);
+  const int      wire1_sda(21);      // GPIO21
+  const int      wire1_scl(22);      // GPIO22
+  const uint32_t wire1_frq(100000);  // 100kHz
   Wire1.begin(wire1_sda, wire1_scl, wire1_frq);
   aqtp.Begin(Wire1);          // default or safe mode
 //  aqtp.Begin(Wire1, 0xXX);  // i2c address customized
 
-  // designate "true" if sleep pin is connected
+  // "true" if sleep pin is connected
   if (true /*false*/) {
-    const int aqtp_sleep_pin(13);  // GPIO13 for sleep pin of m-bux module
+    const int aqtp_sleep_pin(19);  // GPIO19 for sleep pin of M-BUS module
     pinMode(aqtp_sleep_pin, OUTPUT);
     digitalWrite(aqtp_sleep_pin, HIGH);
   }
 
-  // designate "true" to write i2c address into EEPROM
+  // "true" to write i2c address into EEPROM
   if (/*true*/ false)
     aqtp.WriteI2cAddress(0x2E);  // change i2c address to customize
 
-  // designate "true" to write preset message into EEPROM
+  // "true" to write preset message into EEPROM
   if (/*true*/ false)
     aqtp.WritePresetMsg(preset_msg, sizeof(preset_msg)/sizeof(preset_msg[0]));
 
-  // designate "true" to dump EEPROM to the serial monitor
+  // "true" to dump EEPROM to the serial monitor
   if (/*true*/ false)
     aqtp.DumpEeprom();
 
@@ -83,35 +96,118 @@ void setup()
     delay(200);
   }
 
+  // play control
+  play_command = play_stop;
+  msg_selected = 0;
+
+  // LCD control
+  M5.Lcd.fillScreen(TFT_BLACK);
+  M5.Lcd.setFreeFont(FSS9);  // FreeSans9pt7b, height=22px
+  M5.Lcd.setTextSize(1);
+  M5.Lcd.setTextColor(TFT_BLACK, TFT_OLIVE);
+  M5.Lcd.setTextDatum(TC_DATUM);  // Align Middle-Center
+  M5.Lcd.setTextPadding(M5.Lcd.width());
+  M5.Lcd.drawString("BotanicFields, Inc.", M5.Lcd.width() / 2, 0, GFXFF);
+  M5.Lcd.setTextDatum(BC_DATUM);  // Align Bottom-Center
+  M5.Lcd.setTextPadding(M5.Lcd.width() / 6);
+  M5.Lcd.drawString("Prev", M5.Lcd.width() * 21 / 100, M5.Lcd.height(), GFXFF);
+  M5.Lcd.drawString("Play", M5.Lcd.width() * 50 / 100, M5.Lcd.height(), GFXFF);
+  M5.Lcd.drawString("Next", M5.Lcd.width() * 79 / 100, M5.Lcd.height(), GFXFF);
   AdcWaveInit();
 
+  // loop control
   loop_last_ms = millis();
 }
 
 void loop()
 {
+  // buttons
   M5.update();
-
-  int num_of_msg = sizeof(preset_msg)/sizeof(preset_msg[0]);
   if (M5.BtnA.wasReleased()) {
-    if (--msg_select < 0)
-      msg_select = num_of_msg - 1;
-    aqtp.Send(preset_msg[msg_select]);
+    if (aqtp.Busy()) {
+      aqtp.Send("$");  // Abort
+    }
+    play_command = play_previous;
   }
-
   if (M5.BtnB.wasReleased()) {
-    aqtp.Send(preset_msg[msg_select]);
+    if (aqtp.Busy()) {
+      aqtp.Send("$");  // Abort
+      play_command = play_stop;
+    }
+    else {
+      play_command = play_current;
+    }
   }
-
   if (M5.BtnC.wasReleased()) {
-    if (++msg_select >= num_of_msg)
-      msg_select = 0;
-    aqtp.Send(preset_msg[msg_select]);
+    if (aqtp.Busy()) {
+      aqtp.Send("$");  // Abort
+    }
+    play_command = play_forward;
   }
 
+  // play messages
+  int num_of_msg = sizeof(preset_msg)/sizeof(preset_msg[0]);
+  switch (play_command) {
+    case play_current:
+      if (!aqtp.Busy()) {
+        aqtp.Send(preset_msg[msg_selected]);
+        play_command = play_stop;
+      }
+      break;
+    case play_next:
+      if (!aqtp.Busy()) {
+        if (++msg_selected >= num_of_msg)
+          msg_selected = 0;
+        aqtp.Send(preset_msg[msg_selected]);
+        play_command = play_stop;
+      }
+      break;
+    case play_previous:
+      if (!aqtp.Busy()) {
+        if (--msg_selected < 0)
+          msg_selected = num_of_msg - 1;
+        aqtp.Send(preset_msg[msg_selected]);
+        play_command = play_stop;
+      }
+      break;
+    case play_continuous:
+      if (!aqtp.Busy()) {
+        delay(msg_space);
+        aqtp.Send(preset_msg[msg_selected]);
+        if (++msg_selected >= num_of_msg)
+          msg_selected = 0;
+      }
+      break;
+    case play_forward:
+      if (!aqtp.Busy()) {
+        if (++msg_selected >= num_of_msg)
+          msg_selected = 0;
+        delay(msg_space);
+        aqtp.Send(preset_msg[msg_selected]);
+      }
+      break;
+    case play_backward:
+      if (!aqtp.Busy()) {
+        if (--msg_selected < 0)
+          msg_selected = num_of_msg - 1;
+        delay(msg_space);
+        aqtp.Send(preset_msg[msg_selected]);
+      }
+      break;
+    default:
+        play_command = play_stop;
+      break;
+  }
   aqtp.ShowRes(2);
   AdcWave();
 
-  delay(loop_ms + loop_last_ms - millis());
+  // loop control
+  unsigned int delay_ms(0);
+  unsigned int elapse_ms = millis() - loop_last_ms;
+  if (elapse_ms < loop_period_ms) {
+    delay_ms = loop_period_ms - elapse_ms;
+  }
+  delay(delay_ms);
   loop_last_ms = millis();
+//  Serial.printf("loop elapse = %dms\n", elapse_ms);  // for monitoring elapsed time
 }

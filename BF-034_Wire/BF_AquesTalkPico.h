@@ -10,6 +10,7 @@ class AquesTalkPico {
 
   virtual int    Send(const char* msg) = 0;
   virtual size_t Recv(char* res, size_t res_size) = 0;
+  virtual bool   Busy() = 0;
 
   int ShowRes(int res_length_to_show = 1);
   int DumpEeprom();

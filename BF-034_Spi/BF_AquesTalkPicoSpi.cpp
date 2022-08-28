@@ -64,3 +64,16 @@ size_t AquesTalkPicoSpi::Recv(char* res, size_t res_size)
   res[i] = '\0';
   return strlen(res);
 }
+
+bool AquesTalkPicoSpi::Busy()
+{
+  char res[10];
+  int res_length = Recv(res, sizeof(res));
+  if (res_length >= 2) {
+    Serial.printf("[AquesTalk Spi] Receive:%s\n", res);
+    return true;
+  }
+  if (res[0] != '>')
+    return true;
+  return false;
+}

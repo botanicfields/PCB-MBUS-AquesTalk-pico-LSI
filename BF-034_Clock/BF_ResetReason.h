@@ -17,9 +17,5 @@
 
 #include <rom/rtc.h>
 
-String ResetReasonStr(RESET_REASON reason);
-String VerboseResetReasonStr(RESET_REASON reason);
-String ResetReasonCpu0();
-String ResetReasonCpu1();
-String VerboseRestReasonCpu0();
-String VerboseRestReasonCpu1();
+const char* ResetReason(RESET_REASON reason);
+const char* ResetReasonVerbose(RESET_REASON reason);

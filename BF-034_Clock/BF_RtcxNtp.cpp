@@ -5,14 +5,12 @@
 #include "BF_Pcf8563.h"
 #include "BF_RtcxNtp.h"
 
-const char* time_zone  = "JST-9";
-const char* ntp_server = "pool.ntp.org";
 bool sntp_sync_status_complete(false);
 
-void NtpBegin()
+void NtpBegin(const char* time_zone, const char* ntp_server)
 {
   configTzTime(time_zone, ntp_server);
-  Serial.print("NtpBegin: Config TZ time\n");
+  Serial.printf("NtpBegin: config TZ time = %s\n", time_zone);
   Serial.printf("NtpBegin: SNTP sync mode = %d (0:IMMED 1:SMOOTH)\n", sntp_get_sync_mode());
   Serial.printf("NtpBegin: SNTP sync interval = %dms\n", sntp_get_sync_interval());
   sntp_sync_status_complete = false;
@@ -23,28 +21,34 @@ void SntpTimeSyncNotificationCallback(struct timeval *tv)
 {
   sntp_sync_status_t sntp_sync_status = sntp_get_sync_status();
   PrintSntpStatus("SNTP callback:", sntp_sync_status);
-
-  if (sntp_sync_status == SNTP_SYNC_STATUS_COMPLETED)
+  if (sntp_sync_status == SNTP_SYNC_STATUS_COMPLETED) {
     sntp_sync_status_complete = true;
+  }
 }
 
-void RtcxUpdate()
+bool RtcxUpdate(bool rtcx_avail)
 {
   if (sntp_sync_status_complete) {
     sntp_sync_status_complete = false;
 
     struct tm tm_sync;
     getLocalTime(&tm_sync);
-    Serial.print(&tm_sync, "RTCX Update: %A, %B %d %Y %H:%M:%S\n");
+    Serial.print(&tm_sync, "SNTP sync: %A, %B %d %Y %H:%M:%S\n");
     // print sample: must be < 64
     //....:....1....:....2....:....3....:....4....:....5....:....6....
-    //RTCX Update: Wednesday, September 11 2021 11:10:46
+    //SNTP sync: Wednesday, September 11 2021 11:10:46
 
-    if (rtcx.WriteTime(&tm_sync) == 0)
-      Serial.print("RTCx Update: RTCx time updated\n");
-    else
-      Serial.print("RTCx Update: RTCx update failed\n");
+    if (rtcx_avail) {
+      if (rtcx.WriteTime(&tm_sync) == 0) {
+        Serial.print("RTCx updated\n");
+      }
+      else {
+        Serial.print("RTCx update failed\n");
+      }
+    }
+    return true;
   }
+  return false;
 }
 
 void PrintSntpStatus(const char* header, sntp_sync_status_t sntp_sync_status)
@@ -56,37 +60,27 @@ void PrintSntpStatus(const char* header, sntp_sync_status_t sntp_sync_status)
     "sntp_sync_status invalid     ",  // 3
   };
   int sntp_sync_status_index = 3;
-  if (sntp_sync_status >= 0 && sntp_sync_status <= 2)
+  if (sntp_sync_status >= 0 && sntp_sync_status <= 2) {
     sntp_sync_status_index = sntp_sync_status;
-  Serial.printf("%s SNTP sync status = %d: %s\n", header, sntp_sync_status, sntp_sync_status_str[sntp_sync_status_index]);
+  }
+  Serial.printf("%s status = %d %s\n", header, sntp_sync_status, sntp_sync_status_str[sntp_sync_status_index]);
 }
 
-void SetTimeFromRtcx()
+bool SetTimeFromRtcx(const char* time_zone)
 {
+  bool rtcx_valid(false);
   struct tm tm_init;
 
   setenv("TZ", time_zone, 1);
-  tzset();  // Assign the local timezone from setenv for mktime()
-  if (rtcx.ReadTime(&tm_init) == 0) {
-    Serial.print("Set time from RTCx: RTCx valid\n");
-    struct timeval tv = { mktime(&tm_init), 0 };
-    settimeofday(&tv, NULL);
-  }
-  else {
-    Serial.print("Set time from RTCx: ERROR RTCx invalid\n");
-    tm_init.tm_year = 120;  // 2020
-    tm_init.tm_mon  = 0;    // January
-    tm_init.tm_mday = 1;
-    tm_init.tm_hour = 0;
-    tm_init.tm_min  = 0;
-    tm_init.tm_sec  = 0;
-    struct timeval tv = { mktime(&tm_init), 0 };
-    settimeofday(&tv, NULL);
-  }
+  tzset();  // assign timezone with setenv for mktime()
 
-  getLocalTime(&tm_init);
-  Serial.print(&tm_init, "Set time from RTCx: %A, %B %d %Y %H:%M:%S\n");
-  // print sample: must be < 64
-  //....:....1....:....2....:....3....:....4....:....5....:....6....
-  //Set time from RTCx: Wednesday, September 11 2021 11:10:46
+  if (rtcx.ReadTime(&tm_init) == 0) {
+    rtcx_valid = true;
+    struct timeval tv = { mktime(&tm_init), 0 };
+    settimeofday(&tv, NULL);
+    Serial.print("RTCx valid, the localtime was set\n");
+  } else {
+    Serial.print("RTCx not valid\n");
+  }
+  return rtcx_valid;
 }

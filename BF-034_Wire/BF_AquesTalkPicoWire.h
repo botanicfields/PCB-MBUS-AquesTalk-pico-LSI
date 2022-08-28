@@ -14,6 +14,7 @@ class AquesTalkPicoWire : public AquesTalkPico {
   int    Begin(TwoWire &wire, int i2c_address = 0x2e);
   int    Send(const char* msg);
   size_t Recv(char* res, size_t res_size);
+  bool   Busy();
 
  private:
   TwoWire* m_wire;

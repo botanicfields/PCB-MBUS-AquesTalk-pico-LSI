@@ -51,3 +51,20 @@ size_t AquesTalkPicoSerial::Recv(char* res, size_t res_size)
   m_recv_count = 0;
   return strlen(res);
 }
+
+bool AquesTalkPicoSerial::Busy()
+{
+  Send("\r");
+  char res[10];
+  int res_length(0);
+  do {
+    res_length = Recv(res, sizeof(res));
+  } while (res_length == 0);
+  if (res_length >= 2) {
+    Serial.printf("[AquesTalk Serial] Receive:%s\n", res);
+    return true;
+  }
+  if (res[0] != '>')
+    return true;
+  return false;
+}

@@ -11,6 +11,7 @@ class AquesTalkPicoSerial : public AquesTalkPico {
   int    Begin(Stream &stream);
   int    Send(const char* msg);
   size_t Recv(char* res, size_t res_size);
+  bool   Busy();
 
  private:
   Stream*   m_stream;

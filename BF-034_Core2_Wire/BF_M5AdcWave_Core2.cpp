@@ -1,10 +1,10 @@
 // Copyright 2021 BotanicFields, Inc.
 // M5Stack LCD Sound Wave
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include "driver/adc.h"
 #include "esp_adc_cal.h"   // for esp_adc_cal_characteristics_t
-#include "BF_M5AdcWave.h"
+#include "BF_M5AdcWave_Core2.h"
 
 // finite impulse response filter
 const int fir_frame_size(150);

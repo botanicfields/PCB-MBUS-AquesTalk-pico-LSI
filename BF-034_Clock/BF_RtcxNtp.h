@@ -4,10 +4,13 @@
 #pragma once
 
 #include <sys/time.h>  // for struct timeval
-#include <sntp.h>      // for sntp_sync_status, https://github.com/espressif/arduino-esp32 1.0.6-
+#include <sntp.h>      // for sntp_sync_status, https://github.com/espressif/arduino-esp32 >= 1.0.6
 
-void NtpBegin();
+// examples
+// const char* time_zone  = "JST-9";
+// const char* ntp_server = "pool.ntp.org";
+void NtpBegin(const char* time_zone, const char* ntp_server);
 void SntpTimeSyncNotificationCallback(struct timeval *tv);
-void RtcxUpdate();
+bool RtcxUpdate(bool rtcx_avail = true);
 void PrintSntpStatus(const char* header, sntp_sync_status_t sntp_sync_status);
-void SetTimeFromRtcx();
+bool SetTimeFromRtcx(const char* time_zone);

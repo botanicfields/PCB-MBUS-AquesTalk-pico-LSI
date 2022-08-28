@@ -200,7 +200,6 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 |M5Stack| A   | 1つ前のpreset_msgを発声 | 発声を中断して1つ前のpreset_msgを発声 |
 |M5Stack| B   | 現在のpreset_msgを発声 | 発声を中断して停止 |
 |M5Stack| C   | 1つ後のpreset_msgから連続して発声 | 発声を中断して1つ後のpreset_msgから連続して発生 |
-|M5Atom | Btn | 現在のpreset_msgから連続して発声 | 発声を中断して停止 |
 
 ## 4.2 setup()
 - SLEEP ピンをHighにする（デフォルト: 実行する）  

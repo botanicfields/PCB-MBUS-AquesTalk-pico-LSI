@@ -267,7 +267,7 @@ void setup()
   // WiFi connect
   wm.setConfigPortalTimeout(wifi_config_portal_timeout_sec);
   wm.setAPCallback(WifiConfigModeCallback);
-  if (!wm.autoConnect()) {
+  if (wm.autoConnect()) {
     M5.Lcd.setTextColor(TFT_GREEN, TFT_BLACK);  M5.Lcd.println("OK");
   }
   else {

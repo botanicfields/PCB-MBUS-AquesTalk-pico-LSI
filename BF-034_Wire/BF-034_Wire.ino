@@ -90,6 +90,10 @@ void setup()
     delay(200);
   }
 
+  // set default
+  aqtp.WriteSpeed();
+  aqtp.WritePause();
+
   // play control
   play_command = play_stop;
   msg_selected = 0;

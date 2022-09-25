@@ -322,10 +322,13 @@ void setup()
 
   // start TTS
   aqtp.Begin(Wire);
-  int return_code = aqtp.Send("?");
+  int return_code = aqtp.Send("$");
   Serial.printf("AquesTalk pico LSI return code = %d\n", return_code);
   if (return_code == 0) {
     aqtp_exist = true;
+    aqtp.ShowRes();
+    aqtp.WriteSpeed();  // set default
+    aqtp.WritePause();  // set default
   }
 
   // loop control

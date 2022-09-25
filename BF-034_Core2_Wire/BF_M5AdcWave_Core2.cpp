@@ -27,7 +27,7 @@ const int face_x_size(120);
 const int face_y_size(120);
 const int face_x(25);
 const int face_y(25);
-const int dead_zone(200);  // to detect inactivity of AquesTalk pico LSI
+const int dead_zone(300);  // to detect inactivity of AquesTalk pico LSI
 TFT_eSprite wave = TFT_eSprite(&M5.Lcd);
 TFT_eSprite face = TFT_eSprite(&M5.Lcd);
 
@@ -94,7 +94,6 @@ void AdcWave()
   int ave = sum / fir_frame_size;
   int p2p = max - min;
   Serial.printf("[AdcWave] %dms, min %d, ave %d, max %d, p2p %d\n", elapsed_ms, min, ave, max, p2p);
-
 
   // wave on LCD
   wave.fillSprite(TFT_DARKGREY);

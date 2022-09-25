@@ -66,7 +66,7 @@ int AquesTalkPico::DumpEeprom()
 
 int AquesTalkPico::WriteEeprom(int address, int data)
 {
-  char msg[] = "#W3FFCC\r";
+  char msg[] = "#W3FFHH\r";
   msg[2] = HexChar(address / 256 % 16);  // 0xabcd --> 'b'
   msg[3] = HexChar(address /  16 % 16);  // 0xabcd --> 'c'
   msg[4] = HexChar(address       % 16);  // 0xabcd --> 'd'
@@ -107,6 +107,32 @@ int AquesTalkPico::WritePresetMsg(const char* msg[], int num_of_msg)
   return 0;
 }
 
+int AquesTalkPico::WriteSpeed(int speed)
+{
+  if (speed < 50)
+    speed = 50;
+  if (speed > 300)
+    speed = 300;
+  if (WriteEeprom(2, speed) != 0)
+    return 2;
+  if (WriteEeprom(3, speed / 256) != 0)
+    return 3;
+  return 0;
+}
+
+int AquesTalkPico::WritePause(int pause)
+{
+  if (pause < 256)
+    pause = 256;
+  if (pause > 65535)
+    pause = 65535;
+  if (WriteEeprom(4, pause) != 0)
+    return 2;
+  if (WriteEeprom(5, pause / 256) != 0)
+    return 3;
+  return 0;
+}
+
 int AquesTalkPico::WriteSerialSpeed(int serial_speed)
 {
   int data(0);
@@ -123,7 +149,7 @@ int AquesTalkPico::WriteSerialSpeed(int serial_speed)
   case 115200: data = 0x0010;  break;
   default: return 1;
   }
-  if (WriteEeprom(0x000, data)       != 0)
+  if (WriteEeprom(0x000, data) != 0)
     return 2;
   if (WriteEeprom(0x001, data / 256) != 0)
     return 3;

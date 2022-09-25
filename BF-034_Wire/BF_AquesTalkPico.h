@@ -16,8 +16,10 @@ class AquesTalkPico {
   int DumpEeprom();
   int WriteEeprom(int address, int data);
   int WritePresetMsg(const char* msg[], int num_of_msg);
-  int WriteSerialSpeed(int serial_speed);
-  int WriteI2cAddress(int i2c_address);
+  int WriteSpeed(int speed = 100);
+  int WritePause(int speed = 65535);
+  int WriteSerialSpeed(int serial_speed = 9600);
+  int WriteI2cAddress(int i2c_address = 0x2e);
 
  private:
   char HexChar(int n);

@@ -4,29 +4,27 @@
 
 #include <M5Stack.h>
 #include <Free_Fonts.h>
-#include "BF_AquesTalkPicoSerial.h"
+#include "BF_AquesTalkPicoWire.h"
 #include "BF_M5AdcWave.h"
 
-AquesTalkPicoSerial aqtp;
+AquesTalkPicoWire aqtp;
 
+// Han-nya Shingyo
 const char* preset_msg[] = {
 // message must be less than 127 characters
 // ....:....1....:....2....:....3....:....4....:....5....:....6....:....7....:....8....:....9....:....A....:....8....:....C....:..
-  "re'-jide_su.yo'-koso wata'ku_sitati,sho'kka-e\r",
-  "iti'jide_su.ittai,do'-natte/iru'node_suka zo'rutaisa\r",
-  "ni'jide_su.ma'da,deki'nainde_suka sinigamiha'kase\r",
-  "sa'njide_su.sho'kka-no,se'kai,seifuku/ke'ikakuwa cha_ku'cha_kuto,_susun'deima_su\r",
-  "yo'jide_su.omedeto-/goza'i/ma'_su jikken'wa,dai'seiko-de_su\r",
-  "go'jide_su.sho'kka-no/tikara'wa,muge'n/na'node_su\r",
-  "roku'jide_su.urotae'/nai'de,kudasa'i,jigo'kutai_si\r",
-  "siti'jide_su.wata'_ku_sitati,sho'kka-no/shuku'teki kamen'raida-o/tao'_sunode_su\r",
-  "hati'jide_su.sa'-/yukina'sai sho'kka-no/mono'tatiyo\r",
-  "ku'jide_su.kiki'masho- ana'tano,niho'n,seifuku/ke'ikakuo\r",
-  "jyu'-jide_su.oda'marinasai,jigo'kutai_si su'beteno/sippa'iwa,ana'tano/se'ide_su\r",
-  "jyu-iti'jide_su.sho'kka-wa,su'beteo/haka'i_si,se'kaio/_si'hai_sima_su\r",
-  "jyu-ni'jide_su.kaizo-/ni'ngenga,se'kaio/ugo'ka_si sono/kaizo-/ni'ngen+o,_si'hai/suru'noga,wata'ku_side_su\r",
-  "ohayo-/gozaima'_su.ta'datini,saga_si/da'_sunode_su\r",
-  "oyasumi/nasa'i.se'kaiwa,sho'kka-no/mono'de_su\r",
+  "maka-/hannya-haramita-/si'n-gyo-.\r",
+  "kanji-zaibo-sa-gyo-jin/hannya-ha-ra-mi-ta-ji-/sho-kengo-onkaiku-do-/issaiku-yaku\r",
+  "sha-ri-si-/sikifu-i-ku-/ku-fu-i-siki/sikisokuze-ku-/ku-sokuze-siki/jyu-so-gyo-shikiyaku/bu-nyo-ze-\r",
+  "sha-ri-si-ze-/sho-ho-ku-so-/fu-sho-fu-metu/fu-ku-fu-jyo-/fu-zo-fu-gen\r",
+  "ze-ko-ku-chu-/mu-siki/mu-jyu-so-gyo-shiki/mu-genni-bi-zessinni-/mu-sikisho-ko-mi-sokuho-/mu-genkainaisi-/mu-i-sikikai\r",
+  "mu-mu-myo-yaku/mu-mu-myo-jinnaisi-/mu-ro-si-yaku/mu-ro-si-jin/mu-ku-shu-metudo-/mu-ti-yaku/mu-toku\r",
+  "i-mu-sho-tokuko-/bo-daisatta-e-/hannya-ha-ra-mi-ta-ko-\r",
+  "sinmu-ke-ge-/mu-ke-ge-ko-/mu-u-ku-fu-/onri-issai/tendo-mu-so-/ku-gyo-ne-han/sanze-sho-butue-/hannya-ha-ra-mi-ta-ko-\r",
+  "tokua-nokuta-ra-/sanmyakusanbo-daiko-ti-/hannya-ha-ra-mi-ta-\r",
+  "ze-daijinshu-/ze-daimyo-shu-/ze-mu-jyo-shu-/ze-mu-to-do-shu-/no-jo-issaiku-/sinjitufu-ko-\r",
+  "ko-setuhannya-ha-ra-mi-ta-shu-/sokusesshu-wa'tu\r",
+  "gya-te-/gya-te-/ha-ra-gya-te-/haraso-gya-te-/bo-ji-sowaka-/hannya-sin-gyo-.\r",
 };
 
 //..:....1....:....2....:....3....:....4....:....5....:....6....:....7..
@@ -51,55 +49,20 @@ void setup()
   const bool lcd_enable(true);
   const bool sd_enable(true);
   const bool serial_enable(true);
-  const bool i2c_enable(true);
+  const bool i2c_enable(true);  // SCL = GPIO22, SDA = GPIO21, frequency = 100kHz
   M5.begin(lcd_enable, sd_enable, serial_enable, i2c_enable);
-
-  // Serial2 interface defined by Arduino-ESP32
-  //  const int serial2_rx(16);  // GPIO16 as default
-  //  const int serial2_tx(17);  // GPIO17 as default
-  //  Serial2.begin(speed, SERIAL_8N1, serial2_rx, serial2_tx);
-  // select serial speed
-  Serial2.begin(  9600);  // safe mode
-//  Serial2.begin( 38400);  // ATP3011 works, ATP3012 works
-//  Serial2.begin( 76800);  // ATP3012 works, max of ATP3011 but does not work
-//  Serial2.begin(115200);  // max of ATP3012 but does not work
-  while (!Serial2) {
-    Serial.println("[AquesTalk LSI] Waiting Serial2");
-    delay(100);
-  }
-  aqtp.Begin(Serial2);
+  aqtp.Begin(Wire);             // default or safe mode
 
   // "true" if sleep pin is connected
   if (true /*false*/) {
     const int aqtp_sleep_pin(13);  // GPIO13 for sleep pin of M-BUS module
     pinMode(aqtp_sleep_pin, OUTPUT);
     digitalWrite(aqtp_sleep_pin, HIGH);
-
-    // "true" to set speed automatic for ATP3011 & not safe mode
-    if (/*true*/ false) {
-      digitalWrite(aqtp_sleep_pin, LOW);
-      delay(500);
-      digitalWrite(aqtp_sleep_pin, HIGH);
-      delay(80);
-      aqtp.Send("?");
-      for (int i = 0; i < 10; ++i) {
-        aqtp.ShowRes();
-        delay(200);
-      }
-    }
   }
 
-  // "true" to set serial-speed into EEPROM of ATP3012
-  if (/*true*/ false) {
-//    aqtp.WriteSerialSpeed(  9600);
-    aqtp.WriteSerialSpeed( 38400);
-//    aqtp.WriteSerialSpeed( 76800);
-//    aqtp.WriteSerialSpeed(115200);
-    for (int i = 0; i < 10; ++i) {
-      aqtp.ShowRes();
-      delay(200);
-    }
-  }
+  // "true" to write i2c address into EEPROM
+  if (/*true*/ false)
+    aqtp.WriteI2cAddress(0x2E);  // change i2c address to customize
 
   // "true" to write preset message into EEPROM
   if (/*true*/ false)
@@ -125,9 +88,9 @@ void setup()
     delay(200);
   }
 
-  // set default
-  aqtp.WriteSpeed();
-  aqtp.WritePause();
+  // for Han-nya Shingyo
+  aqtp.WriteSpeed(70);
+  aqtp.WritePause(0);
 
   // play control
   play_command = play_stop;
@@ -168,7 +131,8 @@ void loop()
       play_command = play_stop;
     }
     else {
-      play_command = play_current;
+      msg_selected = 0;
+      play_command = play_continuous;
     }
   }
   if (M5.BtnC.wasReleased()) {

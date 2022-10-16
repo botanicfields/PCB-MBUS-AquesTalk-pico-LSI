@@ -1,25 +1,35 @@
 # PCB-MBUS-AquesTalk-pico-LSI
 # M5Stack用 AquesTalk pico LSIモジュール基板
-MBUS Module of AquesTalk pico LSI for M5Stack
+M-BUS Module of AquesTalk pico LSI for M5Stack
 
 # 1. 概要
 　市販の音声合成専用LSI「AquesTalk pico LSI」（別売）をM-BUSモジュールとしてM5Stackに取り付けるための半完成基板です。  
-　AquesTalk pico LSIの詳細は、データシートを参照ください。
-- [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)
-- [Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
+　AquesTalk pico LSIの詳細は、データシートを参照ください。  
+[Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3011](https://www.a-quest.com/archive/manual/atp3011_datasheet.pdf)  
+[Data Sheet: 音声合成 LSI 「AquesTalk pico LSI」ATP3012](https://www.a-quest.com/archive/manual/atp3012_datasheet.pdf)
+
+### 基板V04の変更点
+　2022年10月末から基板V04を提供しています。詳細は、スピーカーの接続の項を参照ください。
+
+- ハンダジャンパJP8, JP9を追加しました。
+- ランドJ5を追加しました。
 
 ### 委託販売
-（スイッチサイエンス扱い）[M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/catalog/7624/)
+（スイッチサイエンス扱い）[M5Stack用 AquesTalk pico LSI モジュール基板](https://www.switch-science.com/collections/marketplace/products/7624)
 
 ### 動作例
-（YouTube）[M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)
+（YouTube）["AquesTalk pico LSI" speaks date and time](https://youtu.be/DpDmjqU7RUM)  
+（YouTube）[M-Bus Module of AquesTalk pico LSI drives the built-in speaker of M5Stack](https://youtu.be/npRQEOJegkY)  
+（YouTube）[M-Bus Module of AquesTalk pico LSI for M5Stack](https://youtu.be/YfKwWRxrInM)  
+（YouTube）[M-Bus Module of AquesTalk pico LSI for M5Stack on Core2](https://youtu.be/zXvg78xzJ5E)
 
 ### 組み立て例
 　組み立てにはハンダ付けが必要です。
 
-左側: ATP3011, 右側: ATP3012  
+左側: ATP3011を搭載、音声アナログ信号をGPIO35に入力するためJP5をショート  
+右側: ATP3012を搭載、音声アナログ信号をGPIO35に入力するためJP6をショート  
 <img src="./image/module1.JPG" width=300> <img src="./image/module2.JPG" width=300>  
-写真右: M5Stack 取り付け例  
+写真右: M5Stack 取り付け例、J4に外部スピーカを接続  
 <img src="./image/module3.JPG" width=300> <img src="./image/module4.JPG" width=300>
 
 ## 1.1 特徴
@@ -51,8 +61,8 @@ SPI: Serial Peripheral Interface
 ※ スピーカーは付属しません。
 
 ### 商品写真
-写真左: 内容物、写真右: モジュール基板裏面  
-<img src="./image/product1.JPG" width=300> <img src="./image/product2.JPG" width=300>
+写真左: 内容物(基板V4)、写真右: 基板V4裏面  
+<img src="./image/v4package.JPG" width=300> <img src="./image/v4back.JPG" width=300>
 
 ## 1.3 別途必要なもの
 - AquesTalk pico LSI（秋月電子通商扱い）  
@@ -71,9 +81,9 @@ ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)
 - スピーカー  
 4～8Ω程度、1W以上が望ましいです。
 - 工具  
-ハンダ、ハンダごて、ニッパー、六角レンチ(0.5mm)、カッター、ピンセットなど
+ハンダ、ハンダごて、ニッパー、六角レンチ(1.5mm)、カッター、ピンセットなど
 - M5Stack  
-サンプルプログラムは、M5Stack Core Basicで動作を確認しています。
+サンプルプログラムは、主にM5Stack Core Basicで動作を確認しています。
 - Arudino-IDEが動作する環境  
 
 # 2. モジュール基板の組み立て
@@ -83,14 +93,6 @@ ATP3012R5-PU](https://akizukidenshi.com/catalog/g/gI-11517/)
 
 左: ATP3011, 右: ATP3012  
 <img src="./image/pcb1.JPG" width=300> <img src="./image/pcb2.JPG" width=300> <img src="./image/pcb3.JPG" width=300> 
-
-## 2.2 モールドの取り付け
-　プロトモジュール（別売）のモールドおよびネジ4本を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドを基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモールドから切り取ります。
-
-<img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300> <img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
-
-## 2.3 スピーカーの接続
-　付属のケーブルでJ4とスピーカー（別売）を接続します。GNDには接続しないでください。
 
 ### ICソケットは使用できません
 　ICソケットを使用すると、プロトモジュールのモールドには収まらなくなります。収まらなくなることを承知の上で1列タイプのICソケットを使用するとATP3011とATP3012を差し換えることができます。モジュール基板裏面からのピンの飛び出しの対処も大変になります。
@@ -103,11 +105,39 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 
 <img src="./image/socket1.JPG" width=300> <img src="./image/socket2.JPG" width=300>
 
-### その他の端子について
-　J2は、ICSPです。コネクタ等は実装していません。使用にはピンヘッダをハンダ付けするなどの処置が必要です。ICSPのVCCはAquesTalk pico LSIの電源端子に繋がっているほか、M-BUSの3.3Vにも繋がっています。ICSPは、モジュール基板をM5Stackから切り離し、単体にして接続してください。  
-　J3は、スタンドアロンモードで使用するPC0-3およびGNDの端子です。コネクタ等は実装していません。使用には信号ケーブルを直接ハンダ付けするなどの処置が必要です。
+## 2.2 モールドの取り付け
+　プロトモジュール（別売）のモールドおよびネジ4本を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドを基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモールドから切り取ります。
 
-- ICSP: In Circuit Serial Programming
+<img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300> <img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
+
+## 2.3 スピーカーの接続
+
+- 付属のケーブルでJ4とスピーカー（付属せず）を接続します。GNDには接続しないでください。
+- （基板V4）J5にスピーカーを接続することができます。GNDには接続しないでください。
+- （基板V4）M5Stack(Core1)の内蔵スピーカーを使用できます。ATP3011の場合はJP8を、ATP3012の場合はJP9をショートしてください。M5Stack本体からGPIO25を使用しないでください。Core2は内蔵スピーカーの回路構成が異なるため、この方法は使えません。  
+
+左側: ATP3011を搭載、GPIO25, 35に接続するためJP8, JP5をショート(基板V4)  
+右側: ATP3012を搭載、GPIO35に接続するためJP6をショート、J5にスピーカを接続(基板V4)  
+
+<img src="./image/v4frame_front.JPG" width=300> <img src="./image/v4frame_back.JPG" width=300>  
+
+参考：写真のスピーカーは以下を両面テープで固定しています。ATP3012の場合かろうじて収まります。上に重ねるモジュールやボトムによっては収まりません。  
+（秋月電子通商扱い）  
+[マイクロスピーカー　赤／黒リード付　８Ω](https://akizukidenshi.com/catalog/g/gP-12494/)  
+[マイクロスピーカー　青／白リード付　８Ω](https://akizukidenshi.com/catalog/g/gP-12495/)
+
+### M5Stackの内蔵スピーカーについて
+　M-BUSのGPIO25は、M5Stack内部のオーディオアンプを通して内蔵スピーカーに繋がっています。AquesTalk pico LSIからの音声出力をGPIO25に入力すれば、内蔵スピーカーから音声を出すことができます。ボリューム(VR)の出力を用いることで音量調節が可能です。以下の写真は、ATP3011を載せたモジュールにおいてGPIO25とボリューム出力を導線で接続した例です。ATP3012の場合は、ボリューム出力は1つ左側のピンです。基板V4のJP8, JP9はこれらの導線を埋め込んだものです。M5Stack自身がGPIO25を使わないことが前提です。Core2は内蔵スピーカーの回路構成が異なるため、この方法は使えません。
+
+VR: Variable Resistor
+
+<img src="./image/gpio25.JPG" width=300>
+
+## 2.4 その他の端子
+- J2は、ICSPです。コネクタ等は実装していません。使用にはピンヘッダをハンダ付けするなどの処置が必要です。ICSPのVCCはAquesTalk pico LSIの電源端子に繋がっているほか、M-BUSの3.3Vにも繋がっています。ICSPは、モジュール基板をM5Stackから切り離し、単体にして接続してください。  
+ICSP: In Circuit Serial Programming  
+
+- J3は、スタンドアロンモードで使用するPC0-3およびGNDの端子です。コネクタ等は実装していません。使用には信号ケーブルを直接ハンダ付けするなどの処置が必要です。
 
 ### スタンドアロン接続例
 　M5Stack用 AquesTalk pico LSIモジュールをM-Busエクステンションに載せ、ダイオードマトリクススイッチ16基板を接続しています。M5Stackの電源とリセットを使用しています。  
@@ -135,7 +165,7 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 (*1) ATP3011の場合、SLEEP解除後の'?'送信で自動設定します。ATP3012の場合EEPROMに設定します。
 
 ## 3.2 ハンダジャンパによる信号の接続
-　モジュール基板裏面のジャンパJP1-JP7をハンダで短絡（クローズ）することにより、GPIOとAquesTalk pico LSIの信号ピンを接続できます。
+　モジュール基板裏面のジャンパJP1-JP9をハンダで短絡（クローズ）することにより、GPIOとAquesTalk pico LSIの信号ピンを接続できます。
 
 |ジャンパ|GPIO|AquesTalk pico LSI|出荷時|
 |:-:|:-:|:-|:-:|
@@ -146,8 +176,10 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 |JP5|35|Analog Out of ATP3011|オープン|
 |JP6|35|Analog Out of ATP3012|オープン|
 |JP7|GND|Shut Down of Power Amplifier|クローズ|
+|JP8|25|Analog VR Out of ATP3011|オープン|
+|JP9|25|Analog VR Out of ATP3012|オープン|
 
-### (1) JP1, JP2, JP3: インタフェース信号
+### JP1, JP2, JP3: インタフェース信号
 　使用するインタフェースに合わせてJP1, JP2, JP3をハンダで短絡（クローズ）します。I2Cの場合はJP1, JP2, JP3を全てオープンのままで使用できます。他の用途に影響がなければJP1, JP2, JP3を短絡（クローズ）することで全てのインタフェースを使用可能です。出荷時はオープンです。
 
 |インタフェース|JP1|JP2|JP3|AquestTalk pico LSIピン=GPIO|
@@ -156,28 +188,26 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 |UART|クローズ| - | - |TX=16, RX=17|
 |SPI| - |クローズ|クローズ|SCK=18, MISO=19, MOSI=23, SS = 5|
 
-- SDA: Serial DAta
-- SCL: Serial CLock
-- RX: Receive
-- TX: Transmit
-- MISO: Master In Slave Out
-- MOSI: Master Out Slave In
-- SCK: Serial ClocK
-- SS: Slave Select
+SDA: Serial DAta  
+SCL: Serial CLock  
+RX: Receive  
+TX: Transmit  
+MISO: Master In Slave Out  
+MOSI: Master Out Slave In  
+SCK: Serial ClocK  
+SS: Slave Select
 
-### (2) JP4: SLEEP 信号
+### JP4: SLEEP 信号
 　AquesTalk pico LSIのSLEEPピンをGPIO13に接続できます。GPIO13=LowでAquesTalk pico LSIがスリープ状態になります。ATP3011のUART接続において9600bpsより速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」に設定し、速度設定のためにSLEEPを使用します。出荷時はオープンです。
 
-### (3) JP5, JP6: 音声信号の取り込み
+### JP5, JP6: 音声信号の取り込み
 　AquesTalk pico LSIの音声出力をGPIO35経由でM5Stackに取り込むことができます。ATP3011の場合はJP5を、ATP3012の場合はJP6をハンダで短絡（クローズ）します。出荷時はオープンです。
 
-### (4) JP7: パワーアンプのシャットダウン
+### JP7: パワーアンプのシャットダウン
 　JP7がクローズ（短絡）の場合、パワーアンプのシャットダウン（SD: Shut Down）信号をGNDに接続しパワーアンプを常に動作状態とします。JP7のハンダを取り除く（オープン）にすると、AquesTalk pico LSIのPLAY信号（負極性）がシャットダウン信号となり、パワーアンプの消費電力を減らすことができます。この設定では音声再生の前後でノイズが発生します。出荷時はクローズ（短絡）です。
 
-## M5Stackの内蔵スピーカーについて
-　M-BUSのGPIO25は、M5Stack内部のオーディオアンプを通して内蔵スピーカーに繋がっています。AquesTalk pico LSIからの音声出力をGPIO25に入力すれば、内蔵スピーカーから音声を出すことができます。ボリューム(VR)の出力を用いることで、音量調節が可能です。以下の写真はATP3011を載せたモジュールにおいて、GPIO25とボリューム出力を導線で接続した例です。ATP3012の場合は、ボリューム出力は1つ左側のピンです。M5Stack自身がGPIO25を使わないことが前提です。Core2はスピーカー回路の構成が異なるため応用できません。
-
-<img src="./image/gpio25.JPG" width=300>
+### JP8, JP9（基板V4）: M5Stack(Core1)の内蔵スピーカーへの接続
+　AquesTalk pico LSIの音声出力をボリューム調節後にGPIO25経由でM5Stack内蔵アンプ・スピーカーに接続することができます。ATP3011の場合はJP8を、ATP3012の場合はJP9をハンダで短絡（クローズ）します。出荷時はオープンです。
 
 # 4. サンプルプログラム
 　AquesTalk pico LSIをM5Stackに接続し、I2C(Wire), UART(Serial), SPIで動作させるプログラムです。デモの内容は同じです。Arduino-IDE環境で使用します。モジュール基板の設定を予め使用するインタフェースに合わせておく必要があります。

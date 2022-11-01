@@ -37,7 +37,7 @@ M-BUS Module of AquesTalk pico LSI for M5Stack
 - ATP3011, ATP3012の両方に対応しています。
 - パワーアンプ（LM4871）を内蔵し、スピーカーを直接駆動できます。
 - AquestTalk pico LSIを3.3Vで動作させ、M-BUSに直結できます。
-- プロトモジュール（別売）のモールドを流用し、M5Stackに取り付けできます。
+- プロトモジュールのモールド（別売）を流用し、M5Stackに取り付けできます。
 - スピーカー以外のケーブル接続が不要です。
 - DIP スイッチで動作モード・通信モードを設定できます。
 - インタフェースをI2C, UART, SPIから選べます。
@@ -57,7 +57,7 @@ SPI: Serial Peripheral Interface
 - 説明書 1部
 
 ※ AquesTalk pico LSIは付属しません。  
-※ プロトモジュールは付属しません。  
+※ プロトモジュールのモールドは付属しません。  
 ※ スピーカーは付属しません。
 
 ### 商品写真
@@ -106,7 +106,11 @@ JS-11791SFTD-14](https://akizukidenshi.com/catalog/g/gP-11451/)  ※在庫限り
 <img src="./image/socket1.JPG" width=300> <img src="./image/socket2.JPG" width=300>
 
 ## 2.2 モールドの取り付け
-　プロトモジュール（別売）のモールドおよびネジ4本を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドを基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモールドから切り取ります。
+　プロトモジュールのモールドおよびネジ4本（別売）を流用して、M5StackのM-BUSモジュールに仕立てることができます。モールドを基板に取り付ける前に、ボリュームやスピーカー出力コネクタの部分をモールドから切り取ります。
+### モールドの入手先（スイッチサイエンス扱い）
+
+- [M5Stackプロトモジュール用プラスチックフレーム（2個入）](https://www.switch-science.com/collections/m5stack/products/8450)
+- [M5Stack用プロトモジュール [M001]](https://www.switch-science.com/collections/m5stack/products/3650)
 
 <img src="./image/proto1.JPG" width=300> <img src="./image/proto2.JPG" width=300> <img src="./image/proto3.JPG" width=300> <img src="./image/proto4.JPG" width=300> <img src="./image/proto5.JPG" width=300> <img src="./image/proto6.JPG" width=300>
 

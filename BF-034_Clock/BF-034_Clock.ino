@@ -285,7 +285,6 @@ void setup()
   M5.Lcd.setTextColor(TFT_CYAN, TFT_BLACK);  M5.Lcd.println("Button-C to continue:");
   while (!M5.BtnC.wasReleased()) {
     M5.update();
-    WifiCheck();
     if (RtcxUpdate()) {
       localtime_valid = true;  // SNTP sync completed
     }
@@ -349,7 +348,7 @@ void loop()
   // table clock
   int forecolor = TFT_WHITE;
   if (!localtime_valid) {
-    forecolor = TFT_BLACK;
+    forecolor = TFT_DARKGREY;
   }
   strftime(str, max_chars, "%H:%M:%S",  &local_tm);  SprStr(&spr, str, FSS24, forecolor, TFT_BLACK, 0,  30, 320);  // FreeSans24pt7b, height=56px
   strftime(str, max_chars, "%A",        &local_tm);  SprStr(&spr, str, FSS12, forecolor, TFT_BLACK, 0,  90, 320);  // FreeSans12pt7b, height=29px

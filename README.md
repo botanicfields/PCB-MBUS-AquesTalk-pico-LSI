@@ -171,26 +171,26 @@ ICSP: In Circuit Serial Programming
 ## 3.2 ハンダジャンパによる信号の接続
 　モジュール基板裏面のジャンパJP1-JP9をハンダで短絡（クローズ）することにより、GPIOとAquesTalk pico LSIの信号ピンを接続できます。
 
-|ジャンパ|GPIO|AquesTalk pico LSI|出荷時|
-|:-:|:-:|:-|:-:|
-|JP1|16|UART-TX|オープン|
-|JP2|19|SPI-MISO|オープン|
-|JP3|5|SPI-SS|オープン|
-|JP4|13|SLEEP|オープン|
-|JP5|35|Analog Out of ATP3011|オープン|
-|JP6|35|Analog Out of ATP3012|オープン|
-|JP7|GND|Shut Down of Power Amplifier|クローズ|
-|JP8|25|Analog VR Out of ATP3011|オープン|
-|JP9|25|Analog VR Out of ATP3012|オープン|
+|ジャンパ|GPIO(Core1)|GPIO(Core2)|AquesTalk pico LSI|出荷時|
+|:-:|:-:|:-:|:-|:-:|
+|JP1|16|13|UART-TX|オープン|
+|JP2|19|38|SPI-MISO|オープン|
+|JP3|5|33|SPI-SS|オープン|
+|JP4|13|19|SLEEP|オープン|
+|JP5|35|35|Analog Out of ATP3011|オープン|
+|JP6|35|35|Analog Out of ATP3012|オープン|
+|JP7|GND|GND|Shut Down of Power Amplifier|クローズ|
+|JP8|25|25|Analog VR Out of ATP3011|オープン|
+|JP9|25|25|Analog VR Out of ATP3012|オープン|
 
 ### JP1, JP2, JP3: インタフェース信号
 　使用するインタフェースに合わせてJP1, JP2, JP3をハンダで短絡（クローズ）します。I2Cの場合はJP1, JP2, JP3を全てオープンのままで使用できます。他の用途に影響がなければJP1, JP2, JP3を短絡（クローズ）することで全てのインタフェースを使用可能です。出荷時はオープンです。
 
-|インタフェース|JP1|JP2|JP3|AquestTalk pico LSIピン=GPIO|
-|:-:|:-:|:-:|:-:|:- |
-|I2C| - | - | - |SDA=21, SCL=22|
-|UART|クローズ| - | - |TX=16, RX=17|
-|SPI| - |クローズ|クローズ|SCK=18, MISO=19, MOSI=23, SS = 5|
+|インタフェース|JP1|JP2|JP3|AquestTalk pico LSIピン=GPIO(Core1)|AquestTalk pico LSIピン=GPIO(Core1)|
+|:-:|:-:|:-:|:-:|:- |:- |
+|I2C| - | - | - |SDA=21, SCL=22|SDA=21, SCL=22|
+|UART|クローズ| - | - |TX=16, RX=17|TX=13, RX=14|
+|SPI| - |クローズ|クローズ|SCK=18, MISO=19, MOSI=23, SS = 5|SCK=18, MISO=38, MOSI=23, SS = 33|
 
 SDA: Serial DAta  
 SCL: Serial CLock  
@@ -202,7 +202,7 @@ SCK: Serial ClocK
 SS: Slave Select
 
 ### JP4: SLEEP 信号
-　AquesTalk pico LSIのSLEEPピンをGPIO13に接続できます。GPIO13=LowでAquesTalk pico LSIがスリープ状態になります。ATP3011のUART接続において9600bpsより速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」に設定し、速度設定のためにSLEEPを使用します。出荷時はオープンです。
+　AquesTalk pico LSIのSLEEPピンをGPIO13(Core2ではGPIO19)に接続できます。SLEEP=LowでAquesTalk pico LSIがスリープ状態になります。ATP3011のUART接続において9600bpsより速い速度が必要な場合、「セーフモード」ではなく「コマンド入力モード」に設定し、速度設定のためにSLEEPを使用します。出荷時はオープンです。
 
 ### JP5, JP6: 音声信号の取り込み
 　AquesTalk pico LSIの音声出力をGPIO35経由でM5Stackに取り込むことができます。ATP3011の場合はJP5を、ATP3012の場合はJP6をハンダで短絡（クローズ）します。出荷時はオープンです。
@@ -242,10 +242,10 @@ SS: Slave Select
 
 ## 4.2 setup()
 - SLEEP ピンをHighにする（デフォルト: 実行する）  
-　JP4をクローズ（短絡）すると、GPIO13とAquesTalk pico LSIのSLEEPピンとが接続します。GPIO13をHIGHにしてSLEEPでない状態にします。
+　JP4をクローズ（短絡）すると、GPIO13(Core2ではGPIO19)とAquesTalk pico LSIのSLEEPピンとが接続します。SLEEPをHIGHにしてSLEEPでない状態にします。
 
 - UARTスピードを設定（ATP3011が対象。UARTのみ。デフォルト: 実行しない）  
-　AquesTalk pico LSI (ATP3011) のUARTスピードを設定します。GPIO13がAquesTalk pico LSIのSLEEPピンと接続している必要があります。
+　AquesTalk pico LSI (ATP3011) のUARTスピードを設定します。GPIO13(Core2ではGPIO19)がAquesTalk pico LSIのSLEEPピンと接続している必要があります。
 
 - UARTスピードを書き換え（ATP3012が対象。UARTのみ。デフォルト: 実行しない）  
 　AquesTalk pico LSI (ATP3012) のUARTスピードを書き換えます。
